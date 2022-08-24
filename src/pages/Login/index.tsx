@@ -5,13 +5,11 @@ import { useNavigate } from 'react-router';
 import {
   Container,
   LeftSideImageContainer,
-  LeftSideMainContent,
   LoginForm,
   RightSideContent,
 } from './styles';
 
 import klv from 'assets/klv.svg';
-import logo from 'assets/logo.svg';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -22,10 +20,7 @@ const Login: React.FC = () => {
   return (
     <Container>
       <LeftSideImageContainer>
-        <img src={logo} alt="Logo" width="215" height="29" />
-        <LeftSideMainContent>
-          <img src={klv} alt="klv" width="215" height="30" />
-        </LeftSideMainContent>
+        <img src={klv} alt="klv" width="215" height="30" />
       </LeftSideImageContainer>
 
       <RightSideContent>

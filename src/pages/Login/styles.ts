@@ -6,24 +6,10 @@ export const Container = styled.div`
   display: flex;
 `;
 
-export const Logo = styled.div`
-  height: 100%;
-  width: 75%;
-  background-color: ${props => props.theme.primary};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 export const LeftSideImageContainer = styled.div`
   height: 100%;
   width: 75%;
   background-color: ${props => props.theme.primary};
-`;
-
-export const LeftSideMainContent = styled.div`
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
