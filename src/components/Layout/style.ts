@@ -1,23 +1,22 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  max-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: none;
+
   display: flex;
   flex-direction: column;
+`;
+
+export const Body = styled.main`
   height: 100%;
-  overflow: hidden;
-`;
-
-export const Body = styled.div`
-  height: calc(100% - 9rem);
-`;
-
-export const Header = styled.div`
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  background-color: ${props => props.theme.sectionBackgound};
+  min-height: 50vh;
 `;
 
 export const NavItem = styled.div``;

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import { Body, Container, Header, NavItem } from './style';
+import Footer from './Footer';
+import Header from './Header';
+import { Body, Container } from './style';
 
 const Layout: React.FC = () => {
   // const permission =
@@ -12,15 +14,11 @@ const Layout: React.FC = () => {
   return (
     <>
       <Container>
-        <Header>
-          Logo
-          <NavItem>Home</NavItem>
-          <NavItem>Events</NavItem>
-          <NavItem>Login</NavItem>
-        </Header>
+        <Header />
         <Body>
           <Outlet />
         </Body>
+        <Footer />
       </Container>
     </>
   );
