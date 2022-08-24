@@ -1,4 +1,4 @@
-import { GiFiles, GiHouse } from 'react-icons/gi';
+import { IoIosLogOut } from 'react-icons/io';
 
 export interface INavbarItem {
   name: string;
@@ -13,14 +13,9 @@ export const navbarPadding = '1rem 17.5rem';
 
 const navbarItems: INavbarItem[] = [
   {
-    name: 'Home',
-    pathTo: '/marketplaces',
-    Icon: GiHouse,
-  },
-  {
-    name: 'MyFiles',
-    pathTo: '/multisign',
-    Icon: GiFiles,
+    name: 'Logout',
+    pathTo: '/login',
+    Icon: IoIosLogOut,
   },
 ];
 

@@ -35,6 +35,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 
   gap: 0.5rem;
 
@@ -117,7 +118,7 @@ export const DesktopContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: fit-content;
   gap: 0.5rem;
 
   @media (max-width: 1024px) {
