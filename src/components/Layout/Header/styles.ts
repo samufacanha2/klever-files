@@ -1,6 +1,7 @@
 import { transparentize } from 'polished';
 import { FiMenu } from 'react-icons/fi';
 import { MdArrowDropDown } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 
 interface IMobileMenu {
@@ -292,3 +293,13 @@ export const MenuIcon = styled(FiMenu).attrs(props => ({
   color: props.theme.navbar.text,
   size: 24,
 }))``;
+
+export const StyledLink = styled(Link)`
+  color: ${props => props.theme.navbar.text};
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s ease;
+  &:hover {
+    text-decoration: underline;
+  }
+`;

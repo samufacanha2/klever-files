@@ -1,13 +1,11 @@
 import { INavbarItem, navbarItems } from 'configs/navbar';
 import { useWidth } from 'contexts/width';
-import React, { useEffect, useRef, useState } from 'react';
-
-import logo from 'assets/logo.svg';
-import { Link } from 'react-router-dom';
-import { Container } from '../style';
+import { useEffect, useRef, useState } from 'react';
 import {
+  Container,
   Content,
   DesktopContainer,
+  DropdownIcon,
   IconsMenu,
   Item,
   Logo,
@@ -17,16 +15,30 @@ import {
   MobileContent,
   MobileItem,
   MobileNavbarItemList,
+  StyledLink,
 } from './styles';
 
+import logo from 'assets/logo.svg';
+
 const NavbarItem: React.FC<INavbarItem> = ({ name, Icon, pathTo }) => {
+  if (name === 'More') {
+    return (
+      <Item selected={window.location.pathname.includes(name.toLowerCase())}>
+        <span>{name}</span>
+        <span>
+          <DropdownIcon />
+        </span>
+      </Item>
+    );
+  }
+
   return (
-    <Link to={pathTo}>
+    <StyledLink to={pathTo}>
       <Item selected={window.location.pathname.includes(name.toLowerCase())}>
         <Icon />
         <span>{name}</span>
       </Item>
-    </Link>
+    </StyledLink>
   );
 };
 
@@ -37,17 +49,15 @@ export const MobileNavbarItem: React.FC<INavbarItem> = ({
   onClick,
 }) => {
   return (
-    <Link to={pathTo}>
+    <StyledLink to={pathTo}>
       <MobileItem
         onClick={onClick}
-        selected={window.location.pathname
-          .slice(1)
-          .includes(name.toLowerCase())}
+        selected={window.location.pathname.includes(name.toLowerCase())}
       >
         <span>{name}</span>
         <Icon />
       </MobileItem>
-    </Link>
+    </StyledLink>
   );
 };
 
@@ -119,11 +129,11 @@ const Navbar: React.FC = () => {
     <>
       <Container ref={mobileNavbar}>
         <Content>
-          <Link to="/">
+          <StyledLink to="/">
             <Logo onClick={handleClose}>
               <img src={logo} alt="Logo" width="215" height="29" />
             </Logo>
-          </Link>
+          </StyledLink>
 
           <DesktopContainer>
             <IconsMenu>
