@@ -13,6 +13,11 @@ export const navbarPadding = '1rem 17.5rem';
 
 const navbarItems: INavbarItem[] = [
   {
+    name: 'Plans',
+    pathTo: '/plans',
+    Icon: IoIosLogOut,
+  },
+  {
     name: 'Logout',
     pathTo: '/login',
     Icon: IoIosLogOut,

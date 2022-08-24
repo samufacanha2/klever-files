@@ -8,9 +8,6 @@ import {
   ListHeaders,
   ListItem,
   ListRow,
-  Plan,
-  PlansBody,
-  PlansContainer,
   SectionHeader,
   UploadContainer,
 } from './styles';
@@ -53,15 +50,6 @@ const Home: React.FC = () => {
           </ListRow>
         </ListBody>
       </ListContainer>
-
-      <SectionHeader>Plans</SectionHeader>
-      <PlansContainer>
-        <PlansBody>
-          <Plan>1 real</Plan>
-          <Plan>2 real</Plan>
-          <Plan>3 real</Plan>
-        </PlansBody>
-      </PlansContainer>
     </Container>
   );
 };
