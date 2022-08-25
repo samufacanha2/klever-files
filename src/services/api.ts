@@ -4,6 +4,7 @@ export enum Service {
   NODE,
   GECKO,
   EXPLORER,
+  IPFS,
 }
 
 export enum Method {
@@ -53,6 +54,7 @@ export const getHost = (
     [Service.GECKO]: 'https://api.coingecko.com/api/v3',
     [Service.EXPLORER]:
       process.env.DEFAULT_EXPLORER_HOST || 'https://testnet.kleverscan.org',
+    [Service.IPFS]: 'https://ipfs.io/ipfs',
   };
 
   let host = hostService[service || 0];
