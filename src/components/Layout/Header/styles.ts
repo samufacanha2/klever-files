@@ -144,6 +144,14 @@ export const OptionsContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 1rem;
+
+    margin-top: auto;
+  }
 `;
 
 export const MobileContainer = styled.div`

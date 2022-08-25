@@ -169,6 +169,16 @@ const Navbar: React.FC = () => {
             />
           ))}
         </MobileNavbarItemList>
+        <OptionsContainer>
+          <ConnectWallet />
+
+          <StyledLink to="/">
+            <Item selected={false}>
+              <IoIosLogOut />
+              <span>Logout</span>
+            </Item>
+          </StyledLink>
+        </OptionsContainer>
       </MobileContent>
     </>
   );

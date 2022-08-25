@@ -54,6 +54,7 @@ export const ConnectContainer = styled.div`
 
   @media screen and (max-width: 1025px) {
     margin-top: auto;
+    padding-right: 0;
 
     flex-direction: column-reverse;
     align-items: flex-end;
