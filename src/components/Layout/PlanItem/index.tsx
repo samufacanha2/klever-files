@@ -1,12 +1,21 @@
+import Button from 'components/Button';
 import React from 'react';
-import { Container } from './styles';
+import { Container, List, Price, Title } from './styles';
 
-const Plans: React.FC = () => {
+const PlanItem: React.FC = () => {
   return (
     <Container>
-      <h1>Teste</h1>
+      <Title>Start</Title>
+      <List>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </List>
+      <Price>$19.99 / Month</Price>
+      <Button>Buy now</Button>
     </Container>
   );
 };
 
-export default Plans;
+export default PlanItem;

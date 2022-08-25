@@ -1,3 +1,4 @@
+import PlanItem from 'components/Layout/PlanItem';
 import React from 'react';
 import { Container, Plan, PlansBody, PlansContainer } from './styles';
 
@@ -6,9 +7,18 @@ const Plans: React.FC = () => {
     <Container>
       <PlansContainer>
         <PlansBody>
-          <Plan>1 real</Plan>
-          <Plan>2 real</Plan>
-          <Plan>3 real</Plan>
+          <Plan>
+            <PlanItem></PlanItem>
+          </Plan>
+          <Plan>
+            <PlanItem></PlanItem>
+          </Plan>
+          <Plan>
+            <PlanItem></PlanItem>
+          </Plan>
+          <Plan>
+            <PlanItem></PlanItem>
+          </Plan>
         </PlansBody>
       </PlansContainer>
     </Container>
