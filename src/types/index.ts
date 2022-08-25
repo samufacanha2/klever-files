@@ -1,6 +1,13 @@
 export interface IFile {
   name: string;
-  extension: string;
   hash: string;
   size: number;
+}
+
+export interface IPlanItem {
+  name: string;
+  pros: string[];
+  cons?: string[];
+  price: number;
+  storage: number;
 }

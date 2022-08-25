@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { FadeIn } from 'styles/global';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
 `;
 
@@ -46,4 +47,5 @@ export const LoginForm = styled.form`
   align-items: flex-start;
   justify-content: center;
   gap: 2.5rem;
+  animation: ${FadeIn} 0.3s ease-in-out;
 `;

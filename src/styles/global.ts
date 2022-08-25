@@ -1,5 +1,5 @@
 import { transparentize } from 'polished';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, keyframes } from 'styled-components';
 
 export default createGlobalStyle`
   * {
@@ -72,4 +72,16 @@ export default createGlobalStyle`
     border-radius: 10px;
   }
   
+  
+`;
+
+export const FadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;

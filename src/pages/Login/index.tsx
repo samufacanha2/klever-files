@@ -1,7 +1,6 @@
 import Button from 'components/Button';
 import Input from 'components/Input';
-import React from 'react';
-import { useNavigate } from 'react-router';
+import React, { useState } from 'react';
 import {
   Container,
   LeftSideImageContainer,
@@ -10,11 +9,23 @@ import {
 } from './styles';
 
 import klv from 'assets/klv.svg';
+import { useNavigate } from 'react-router';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const handleSubmit = (): void => {
-    navigate('/files');
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    console.log('test');
+    await new Promise<void>(resolve =>
+      setTimeout(() => {
+        resolve(navigate('/files'));
+      }, 500),
+    );
+    console.log('test2');
+    setLoading(false);
   };
 
   return (
@@ -28,7 +39,7 @@ const Login: React.FC = () => {
           <h1>Login</h1>
           <Input type="text" placeholder="Email" title="Email" />
           <Input type="password" placeholder="Password" title="Password" />
-          <Button type="submit">Login</Button>
+          <Button type="submit">{loading ? 'Loading...' : 'Login'}</Button>
         </LoginForm>
       </RightSideContent>
     </Container>

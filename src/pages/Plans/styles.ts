@@ -27,10 +27,3 @@ export const SectionHeader = styled.div`
   font-size: 2.5rem;
   font-weight: bold;
 `;
-
-export const Plan = styled.div`
-  background-color: ${props => props.theme.white};
-  width: 50%;
-  border-radius: 1rem;
-  padding: 1rem;
-`;

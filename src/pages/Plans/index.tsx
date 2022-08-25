@@ -1,24 +1,16 @@
 import PlanItem from 'components/Layout/PlanItem';
+import plans from 'mocks/plans';
 import React from 'react';
-import { Container, Plan, PlansBody, PlansContainer } from './styles';
+import { Container, PlansBody, PlansContainer } from './styles';
 
 const Plans: React.FC = () => {
   return (
     <Container>
       <PlansContainer>
         <PlansBody>
-          <Plan>
-            <PlanItem></PlanItem>
-          </Plan>
-          <Plan>
-            <PlanItem></PlanItem>
-          </Plan>
-          <Plan>
-            <PlanItem></PlanItem>
-          </Plan>
-          <Plan>
-            <PlanItem></PlanItem>
-          </Plan>
+          {plans.map((plan, _) => (
+            <PlanItem {...plan} key={plan.price} />
+          ))}
         </PlansBody>
       </PlansContainer>
     </Container>

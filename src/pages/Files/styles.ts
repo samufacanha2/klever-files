@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { darken, lighten } from 'polished';
+import { FadeIn } from 'styles/global';
+
 export const Container = styled.div`
   width: 100%;
 
@@ -14,6 +17,63 @@ export const Container = styled.div`
 
 export const UploadContainer = styled.div`
   width: 40%;
+
+  animation: ${FadeIn} 0.3s ease-in-out;
+`;
+export const UploadLoaderContainer = styled.div`
+  display: flex;
+  > div {
+    &:nth-child(2) {
+      width: 6rem;
+    }
+  }
+`;
+
+export const InputFile = styled.label<{ isDragging: boolean }>`
+  padding: 1.25rem 1.5rem;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed ${props => props.theme.card.border};
+  border-radius: 0.5rem;
+
+  background-color: ${props => lighten(0.1, props.theme.background)};
+
+  background-color: ${props =>
+    props.isDragging && darken(0.025, props.theme.card.background)} !important;
+  border-color: ${props =>
+    darken(props.isDragging ? 0.01 : 0, props.theme.card.border)};
+
+  color: ${props => props.theme.white};
+  font-weight: 400;
+  font-size: 0.9rem;
+
+  transition: 0.1s linear;
+
+  &:hover {
+    border-color: ${props => darken(0.05, props.theme.card.border)};
+    background-color: ${props => darken(0.025, props.theme.card.background)};
+  }
+
+  input {
+    display: none;
+  }
+
+  label {
+    cursor: pointer;
+
+    color: #f372ff;
+    font-weight: 500;
+  }
+  &:hover {
+    cursor: pointer;
+    label {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const ListContainer = styled.table`
@@ -24,6 +84,8 @@ export const ListContainer = styled.table`
   border-radius: 1rem;
 
   border-spacing: 0 0.5rem;
+  opacity: 0;
+  animation: ${FadeIn} 0.3s ease-in-out 0.15s forwards;
 `;
 
 export const ListHeaders = styled.thead`
@@ -59,6 +121,9 @@ export const SectionHeader = styled.div`
   color: ${props => props.theme.white};
   font-size: 2.5rem;
   font-weight: bold;
+
+  opacity: 0;
+  animation: ${FadeIn} 0.3s ease-in-out 0.1s forwards;
 `;
 
 export const PlanInfo = styled.div`
@@ -70,6 +135,9 @@ export const PlanInfo = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 0.5rem;
+
+  opacity: 0;
+  animation: ${FadeIn} 0.3s ease-in-out 0.2s forwards;
 `;
 
 export const CurrentPlan = styled.div`
@@ -90,3 +158,10 @@ export const RemainingStorage = styled.div`
   gap: 0.5rem;
 `;
 export const Remaining = styled.div``;
+
+export const LoadingContainer = styled.div`
+  width: 100%;
+  height: calc(100vh - 10rem);
+  display: grid;
+  place-items: center;
+`;

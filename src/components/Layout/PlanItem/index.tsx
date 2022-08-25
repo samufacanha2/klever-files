@@ -1,39 +1,32 @@
 import Button from 'components/Button';
 import React from 'react';
+import { IPlanItem } from 'types';
 import { Container, List, ListItem, Price, Status, Title } from './styles';
 
-const PlanItem: React.FC = () => {
+const PlanItem: React.FC<IPlanItem> = ({ name, price, pros, cons = [] }) => {
   return (
     <Container>
-      <Title>Start</Title>
+      <Title>{name}</Title>
       <List>
-        <ListItem>
-          <Status>
-            <p>X</p>
-          </Status>
-          <p>Item 1</p>
-        </ListItem>
-        <ListItem>
-          <Status>
-            <p>X</p>
-          </Status>
-          <p>Item 1</p>
-        </ListItem>
-        <ListItem>
-          <Status>
-            <p>X</p>
-          </Status>
-          <p>Item 1</p>
-        </ListItem>
-        <ListItem>
-          <Status>
-            <p>X</p>
-          </Status>
-          <p>Item 1</p>
-        </ListItem>
+        {pros.map((pro, index) => (
+          <ListItem>
+            <Status>
+              <p>✔️</p>
+            </Status>
+            <p>{pro}</p>
+          </ListItem>
+        ))}
+        {cons.map((con, index) => (
+          <ListItem>
+            <Status>
+              <p>❌</p>
+            </Status>
+            <p>{con}</p>
+          </ListItem>
+        ))}
       </List>
-      <Price>$19.99 / Month</Price>
-      <Button>Buy now</Button>
+      <Price>{price ? `${price}/Month` : 'Free!'}</Price>
+      {!!price && <Button>Buy now</Button>}
     </Container>
   );
 };
