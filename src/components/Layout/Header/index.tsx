@@ -5,10 +5,10 @@ import {
   Container,
   Content,
   DesktopContainer,
-  DropdownIcon,
   IconsMenu,
   Item,
   Logo,
+  Logout,
   MenuIcon,
   MobileBackground,
   MobileContainer,
@@ -19,22 +19,14 @@ import {
 } from './styles';
 
 import logo from 'assets/logo.svg';
+import { IoIosLogOut } from 'react-icons/io';
+import { useLocation } from 'react-router-dom';
 
 const NavbarItem: React.FC<INavbarItem> = ({ name, Icon, pathTo }) => {
-  if (name === 'More') {
-    return (
-      <Item selected={window.location.pathname.includes(name.toLowerCase())}>
-        <span>{name}</span>
-        <span>
-          <DropdownIcon />
-        </span>
-      </Item>
-    );
-  }
-
+  const location = useLocation();
   return (
     <StyledLink to={pathTo}>
-      <Item selected={window.location.pathname.includes(name.toLowerCase())}>
+      <Item selected={location.pathname.slice(1).includes(name.toLowerCase())}>
         <Icon />
         <span>{name}</span>
       </Item>
@@ -48,11 +40,12 @@ export const MobileNavbarItem: React.FC<INavbarItem> = ({
   pathTo,
   onClick,
 }) => {
+  const location = useLocation();
   return (
     <StyledLink to={pathTo}>
       <MobileItem
         onClick={onClick}
-        selected={window.location.pathname.includes(name.toLowerCase())}
+        selected={location.pathname.slice(1).includes(name.toLowerCase())}
       >
         <span>{name}</span>
         <Icon />
@@ -141,6 +134,14 @@ const Navbar: React.FC = () => {
                 <NavbarItem key={String(index)} {...item} />
               ))}
             </IconsMenu>
+            <Logout>
+              <StyledLink to="/">
+                <Item selected={false}>
+                  <IoIosLogOut />
+                  <span>Logout</span>
+                </Item>
+              </StyledLink>
+            </Logout>
           </DesktopContainer>
 
           <MobileContainer>

@@ -4,7 +4,11 @@ export const Container = styled.div`
   margin: auto;
   background-color: ${props => props.theme.background};
   width: 100%;
+  min-height: 100vh;
   padding: 1 1.5rem;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Body = styled.main`
@@ -13,6 +17,7 @@ export const Body = styled.main`
   display: block;
   margin: 0 auto;
   max-width: ${props => props.theme.maxWidth};
+  width: 100%;
 `;
 
 export const NavItem = styled.div``;

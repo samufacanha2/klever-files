@@ -14,7 +14,7 @@ import klv from 'assets/klv.svg';
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const handleSubmit = (): void => {
-    navigate('/');
+    navigate('/files');
   };
 
   return (
@@ -27,8 +27,8 @@ const Login: React.FC = () => {
         <LoginForm onSubmit={handleSubmit}>
           <h1>Login</h1>
           <Input type="text" placeholder="Email" title="Email" />
-          <Input type="password" placeholder="Senha" title="Password" />
-          <Button type="submit">Entrar</Button>
+          <Input type="password" placeholder="Password" title="Password" />
+          <Button type="submit">Login</Button>
         </LoginForm>
       </RightSideContent>
     </Container>

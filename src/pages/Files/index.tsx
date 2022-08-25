@@ -2,17 +2,22 @@ import Button from 'components/Button';
 import React from 'react';
 import {
   Container,
+  CurrentPlan,
   ListBody,
   ListContainer,
   ListHeader,
   ListHeaders,
   ListItem,
   ListRow,
+  Plan,
+  PlanInfo,
+  Remaining,
+  RemainingStorage,
   SectionHeader,
   UploadContainer,
 } from './styles';
 
-const Home: React.FC = () => {
+const Files: React.FC = () => {
   return (
     <Container>
       <UploadContainer>
@@ -50,8 +55,20 @@ const Home: React.FC = () => {
           </ListRow>
         </ListBody>
       </ListContainer>
+
+      <PlanInfo>
+        <CurrentPlan>
+          Your Plan:
+          <Plan to="/plans">Free</Plan>
+        </CurrentPlan>
+
+        <RemainingStorage>
+          Remaining Storage:
+          <Remaining>42 KB</Remaining>
+        </RemainingStorage>
+      </PlanInfo>
     </Container>
   );
 };
 
-export default Home;
+export default Files;
