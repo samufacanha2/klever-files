@@ -139,8 +139,11 @@ export const IconsMenu = styled.div`
   }
 `;
 
-export const Logout = styled.div`
+export const OptionsContainer = styled.div`
   margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const MobileContainer = styled.div`

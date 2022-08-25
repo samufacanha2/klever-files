@@ -8,19 +8,20 @@ import {
   IconsMenu,
   Item,
   Logo,
-  Logout,
   MenuIcon,
   MobileBackground,
   MobileContainer,
   MobileContent,
   MobileItem,
   MobileNavbarItemList,
+  OptionsContainer,
   StyledLink,
 } from './styles';
 
 import logo from 'assets/logo.svg';
 import { IoIosLogOut } from 'react-icons/io';
 import { useLocation } from 'react-router-dom';
+import ConnectWallet from './ConnectWallet';
 
 const NavbarItem: React.FC<INavbarItem> = ({ name, Icon, pathTo }) => {
   const location = useLocation();
@@ -134,14 +135,16 @@ const Navbar: React.FC = () => {
                 <NavbarItem key={String(index)} {...item} />
               ))}
             </IconsMenu>
-            <Logout>
+            <OptionsContainer>
+              <ConnectWallet />
+
               <StyledLink to="/">
                 <Item selected={false}>
                   <IoIosLogOut />
                   <span>Logout</span>
                 </Item>
               </StyledLink>
-            </Logout>
+            </OptionsContainer>
           </DesktopContainer>
 
           <MobileContainer>

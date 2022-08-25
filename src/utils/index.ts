@@ -24,7 +24,9 @@ export const formatSize = (number: number): string => {
       .reverse()
       .find(i => number >= i.value) || lookup[0];
 
-  return `${toLocaleFixed(number / item.value, 2).replace(regex, '$1')} ${
+  console.log(number);
+
+  return `${(number / item.value).toFixed(2).replace(regex, '$1')} ${
     item.symbol
   }B`;
 };
@@ -35,4 +37,43 @@ export const stringEllipsis = (inputString: string, maxLen: number): string => {
         -(maxLen / 2),
       )}`
     : inputString;
+};
+
+export const doIf = async (
+  success: () => any,
+  failure: () => any,
+  condition: () => boolean | Promise<boolean>,
+  timeoutMS = 5000,
+  intervalMS = 100,
+): Promise<void> => {
+  let interval: any;
+
+  const IntervalPromise = new Promise(resolve => {
+    const interval = setInterval(() => {
+      if (condition()) {
+        resolve(
+          (() => {
+            success();
+            clearInterval(interval);
+            clearTimeout(timeout);
+          })(),
+        );
+      }
+    }, intervalMS);
+  });
+
+  let timeout: any;
+
+  const TimeoutPromise = new Promise(resolve => {
+    timeout = setTimeout(() => {
+      resolve(
+        (() => {
+          failure();
+          clearInterval(interval);
+        })(),
+      );
+    }, timeoutMS);
+  });
+
+  await Promise.race([IntervalPromise, TimeoutPromise]);
 };
