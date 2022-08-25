@@ -148,7 +148,7 @@ const Files: React.FC = () => {
               <RemainingStorage>
                 Remaining Storage:
                 <Remaining>
-                  {formatSize((plan.storage - getTotalStorage()) / 1000)}{' '}
+                  {formatSize(plan.storage - getTotalStorage())}{' '}
                 </Remaining>
               </RemainingStorage>
             </PlanInfo>
