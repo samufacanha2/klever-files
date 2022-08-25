@@ -47,6 +47,7 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const LogoContainer = styled.div`
+  padding: 0 1rem;
   img {
     position: unset !important;
     display: unset !important;

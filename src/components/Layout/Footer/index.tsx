@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
     <Container>
       <DescriptionContainer>
         <LogoContainer>
-          <img src={logo} alt="Logo" width="224" height="28" />
+          <img src={logo} alt="Logo" />
         </LogoContainer>
         <SocialContainer>
           {socials.map((social, index) => (
