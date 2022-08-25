@@ -15,6 +15,7 @@ export const Container = styled.div`
   border-radius: 1rem;
   padding: 1rem;
 
+  opacity: 0;
   animation: ${FadeIn} 0.3s ease-in-out 0.15s forwards;
 `;
 

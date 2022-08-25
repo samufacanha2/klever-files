@@ -17,8 +17,9 @@ export const Container = styled.div`
 
 export const UploadContainer = styled.div`
   width: 40%;
+  opacity: 0;
 
-  animation: ${FadeIn} 0.3s ease-in-out;
+  animation: ${FadeIn} 0.3s ease-in-out 0.2s forwards;
 `;
 export const UploadLoaderContainer = styled.div`
   display: flex;
