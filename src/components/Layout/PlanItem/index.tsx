@@ -22,14 +22,11 @@ import {
 
 const checkTxStatus = async (response: any): Promise<boolean> => {
   const hash = response.data.txsHashes[0];
-  console.log(hash);
-  try {
-    const txResponse = await api.get({ route: `transaction/${hash}` });
-    return txResponse.data.transaction.status === 'success';
-  } catch (error) {
-    console.log(error);
+  const txResponse = await api.get({ route: `transaction/${hash}` });
+  if (txResponse.error !== '') {
     return false;
   }
+  return txResponse.data.transaction.status === 'success';
 };
 
 const PlanItem: React.FC<IPlanItem> = ({
