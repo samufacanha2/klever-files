@@ -22,6 +22,7 @@ export const UploadContainer = styled.div`
 `;
 export const UploadLoaderContainer = styled.div`
   display: flex;
+  justify-content: center;
   > div {
     &:nth-child(2) {
       width: 6rem;

@@ -128,6 +128,31 @@ const Files: React.FC = () => {
           onDragEnter={handleDragEnter}
           onDragLeave={handleDragLeave}
         >
+          <SectionHeader>Files</SectionHeader>
+
+          <ListContainer>
+            <ListHeaders>
+              {fileHeaders.map(header => (
+                <ListHeader>{header}</ListHeader>
+              ))}
+            </ListHeaders>
+            <ListBody>
+              {files.map(file => (
+                <ListRow key={file.hash}>
+                  <ListItem>{file.name}</ListItem>
+                  <ListItem>
+                    <HashItem>
+                      {file.hash} <Copy data={file.hash} />
+                    </HashItem>
+                  </ListItem>
+                  <ListItem>{file.size}B</ListItem>
+                  <ListItem>
+                    <a href="#">Config</a>
+                  </ListItem>
+                </ListRow>
+              ))}
+            </ListBody>
+          </ListContainer>
           <UploadLoaderContainer>
             <UploadContainer>
               <InputFile isDragging={isDragging} htmlFor="input">
@@ -157,32 +182,6 @@ const Files: React.FC = () => {
             </UploadContainer>
             {isUploading && <Loader inline />}
           </UploadLoaderContainer>
-
-          <SectionHeader>Files</SectionHeader>
-
-          <ListContainer>
-            <ListHeaders>
-              {fileHeaders.map(header => (
-                <ListHeader>{header}</ListHeader>
-              ))}
-            </ListHeaders>
-            <ListBody>
-              {files.map(file => (
-                <ListRow key={file.hash}>
-                  <ListItem>{file.name}</ListItem>
-                  <ListItem>
-                    <HashItem>
-                      {file.hash} <Copy data={file.hash} />
-                    </HashItem>
-                  </ListItem>
-                  <ListItem>{file.size}B</ListItem>
-                  <ListItem>
-                    <a href="#">Config</a>
-                  </ListItem>
-                </ListRow>
-              ))}
-            </ListBody>
-          </ListContainer>
 
           <PlanInfo>
             <CurrentPlan>
