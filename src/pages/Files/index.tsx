@@ -6,11 +6,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { IFile } from 'types';
 import {
+  ActionsButton,
   Container,
   CurrentPlan,
-  DownloadButton,
   HashItem,
   InputFile,
+  ItemContent,
   ListBody,
   ListContainer,
   ListHeader,
@@ -30,7 +31,7 @@ import {
 
 import { useWidth } from 'contexts/width';
 import plans from 'mocks/plans';
-import { MdOutlineFileDownload } from 'react-icons/md';
+import { MdOutlineFileDownload, MdOutlineSettings } from 'react-icons/md';
 import { formatSize, stringEllipsis } from 'utils';
 
 const Files: React.FC = () => {
@@ -166,9 +167,9 @@ const Files: React.FC = () => {
                 <ListRow key={file.hash}>
                   <ListItem>
                     <NameContent>
-                      <DownloadButton>
+                      <ActionsButton>
                         <MdOutlineFileDownload size={24} />
-                      </DownloadButton>
+                      </ActionsButton>
                       {file.name}
                     </NameContent>
                   </ListItem>
@@ -178,9 +179,15 @@ const Files: React.FC = () => {
                       <Copy data={file.hash} />
                     </HashItem>
                   </ListItem>
-                  <ListItem>{formatSize(file.size)}</ListItem>
                   <ListItem>
-                    <a href="#">Config</a>
+                    <ItemContent>{formatSize(file.size)}</ItemContent>
+                  </ListItem>
+                  <ListItem>
+                    <ItemContent>
+                      <ActionsButton>
+                        <MdOutlineSettings />
+                      </ActionsButton>
+                    </ItemContent>
                   </ListItem>
                 </ListRow>
               ))}

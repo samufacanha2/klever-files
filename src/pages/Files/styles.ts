@@ -197,7 +197,16 @@ export const NameContent = styled.div`
   gap: 8px;
 `;
 
-export const DownloadButton = styled.button`
+export const ActionsButton = styled.button`
+  padding: 0;
+  border: none;
+  background: none;
+  color: ${props => props.theme.card.text};
+`;
+
+export const ItemContent = styled.button`
+  margin: auto;
+  width: 70%;
   padding: 0;
   border: none;
   background: none;
