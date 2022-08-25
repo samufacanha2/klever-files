@@ -18,7 +18,7 @@ export const UploadContainer = styled.div`
 
 export const ListContainer = styled.table`
   min-height: 30vh;
-  background-color: ${props => props.theme.white};
+  background-color: ${props => props.theme.card.background};
 
   padding: 1rem;
   border-radius: 1rem;
@@ -28,7 +28,7 @@ export const ListContainer = styled.table`
 
 export const ListHeaders = styled.thead`
   border-radius: 0.5rem;
-  backdrop-filter: brightness(1.1);
+  backdrop-filter: brightness(1.6);
 `;
 
 export const ListBody = styled.tbody``;
@@ -37,15 +37,22 @@ export const ListHeader = styled.th`
   font-weight: normal;
   padding: 1rem 2rem;
   text-align: left;
+  color: ${props => props.theme.card.text};
 `;
 
 export const ListRow = styled.tr`
-  backdrop-filter: brightness(1.1);
+  backdrop-filter: brightness(1.25);
   border-radius: 0.5rem;
 `;
 
 export const ListItem = styled.td`
   padding: 1rem 2rem;
+  color: ${props => props.theme.card.text};
+`;
+
+export const HashItem = styled.div`
+  display: flex;
+  gap: 0.5rem;
 `;
 
 export const SectionHeader = styled.div`
