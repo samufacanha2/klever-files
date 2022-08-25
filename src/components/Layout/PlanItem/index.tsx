@@ -1,11 +1,12 @@
 import { core, ITransfer, TransactionType } from '@klever/sdk';
 import Button from 'components/Button';
+import Loading from 'components/Loading';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import api from 'services/api';
 import { IPlanItem } from 'types';
-import { doIf } from 'utils';
+import { asyncDoIf } from 'utils';
 import { useDidUpdateEffect } from 'utils/hooks';
 import {
   Container,
@@ -19,6 +20,17 @@ import {
   UnderText,
 } from './styles';
 
+const checkTxStatus = async (response: any) => {
+  try {
+    const hash = response.data.txsHashes[0];
+    console.log(hash);
+    const txResponse = await api.get({ route: `transaction/${hash}` });
+    return txResponse.data.transaction.status === 'success';
+  } catch (e) {
+    return false;
+  }
+};
+
 const PlanItem: React.FC<IPlanItem> = ({
   name,
   price,
@@ -28,17 +40,19 @@ const PlanItem: React.FC<IPlanItem> = ({
   main,
 }) => {
   const [sucessful, setSucessful] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleCrypto = async () => {
+    setLoading(true);
     if (!process.env.REACT_APP_RECEIVER) {
       toast.error('Please config a receiver address');
       return;
     }
 
     const payload: ITransfer = {
-      amount: price * 10 ** 6,
+      amount: price * 10 ** 2,
       receiver: process.env.REACT_APP_RECEIVER,
       kda: 'TUSD-13T0',
     };
@@ -55,16 +69,15 @@ const PlanItem: React.FC<IPlanItem> = ({
     const response = await core.broadcastTransactions([signedTx]);
     toast.success('Transaction broadcasted');
 
-    const checkTxStatus = async () => {
-      const hash = response.data.txsHashes[0];
-      const txResponse = await api.get({ route: `/transactions/${hash}` });
-      return txResponse.data.transaction.status === 'success';
-    };
-
-    doIf(
+    asyncDoIf(
       () => setSucessful(true),
-      () => setSucessful(false),
-      async () => await checkTxStatus(),
+      () => {
+        setLoading(false);
+
+        toast.error('Transaction failed');
+      },
+      async () => await checkTxStatus(response),
+      20,
     );
   };
 
@@ -77,45 +90,48 @@ const PlanItem: React.FC<IPlanItem> = ({
   }, [sucessful]);
 
   return (
-    <Container>
-      <Title>{name}</Title>
-      <List>
-        {pros.map((pro, index) => (
-          <ListItem>
-            <Status>
-              <p>✔️</p>
-            </Status>
-            <p>{pro}</p>
-          </ListItem>
-        ))}
-        {cons.map((con, index) => (
-          <ListItem>
-            <Status>
-              <p>❌</p>
-            </Status>
-            <p>{con}</p>
-          </ListItem>
-        ))}
-      </List>
-      <Price>{price ? `$${price}/Month` : 'Free!'}</Price>
-      {!!price && (
-        <PaymentContainer>
-          <Button
-            styleType={`${main ? 'primary' : 'outlined'}`}
-            onClick={handleCrypto}
-          >
-            Pay with Crypto
-          </Button>
-          <StyledLink
-            href={productLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <UnderText>Pay with credit card</UnderText>
-          </StyledLink>
-        </PaymentContainer>
-      )}
-    </Container>
+    <>
+      {loading && <Loading />}
+      <Container>
+        <Title>{name}</Title>
+        <List>
+          {pros.map((pro, index) => (
+            <ListItem>
+              <Status>
+                <p>✔️</p>
+              </Status>
+              <p>{pro}</p>
+            </ListItem>
+          ))}
+          {cons.map((con, index) => (
+            <ListItem>
+              <Status>
+                <p>❌</p>
+              </Status>
+              <p>{con}</p>
+            </ListItem>
+          ))}
+        </List>
+        <Price>{price ? `$${price}/Month` : 'Free!'}</Price>
+        {!!price && (
+          <PaymentContainer>
+            <Button
+              styleType={`${main ? 'primary' : 'outlined'}`}
+              onClick={handleCrypto}
+            >
+              Pay with Crypto
+            </Button>
+            <StyledLink
+              href={productLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <UnderText>Pay with credit card</UnderText>
+            </StyledLink>
+          </PaymentContainer>
+        )}
+      </Container>
+    </>
   );
 };
 
