@@ -12,7 +12,7 @@ import {
   UploadContainer,
 } from './styles';
 
-const Home: React.FC = () => {
+const List: React.FC = () => {
   return (
     <Container>
       <UploadContainer>
@@ -54,4 +54,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default List;

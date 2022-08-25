@@ -1,5 +1,5 @@
-import { IoIosLogOut } from 'react-icons/io';
-
+import { BsCoin } from 'react-icons/bs';
+import { IoMdList } from 'react-icons/io';
 export interface INavbarItem {
   name: string;
   pathTo: string;
@@ -13,14 +13,14 @@ export const navbarPadding = '1rem 17.5rem';
 
 const navbarItems: INavbarItem[] = [
   {
-    name: 'Plans',
-    pathTo: '/plans',
-    Icon: IoIosLogOut,
+    name: 'List',
+    pathTo: '/list',
+    Icon: IoMdList,
   },
   {
-    name: 'Logout',
-    pathTo: '/login',
-    Icon: IoIosLogOut,
+    name: 'Plans',
+    pathTo: '/plans',
+    Icon: BsCoin,
   },
 ];
 

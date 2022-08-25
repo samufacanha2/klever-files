@@ -35,11 +35,12 @@ export const Content = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
 
   gap: 0.5rem;
 
   max-width: ${props => props.theme.maxWidth};
+
+  width: 100%;
 
   margin: 0 auto;
 `;
@@ -114,11 +115,10 @@ export const MobileItem = styled(Item)`
 
 export const DesktopContainer = styled.div`
   display: flex;
+  width: 100%;
 
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  width: fit-content;
   gap: 0.5rem;
 
   @media (max-width: 1024px) {
@@ -137,6 +137,10 @@ export const IconsMenu = styled.div`
   @media (max-width: 1024px) {
     display: none;
   }
+`;
+
+export const Logout = styled.div`
+  margin-left: auto;
 `;
 
 export const MobileContainer = styled.div`
