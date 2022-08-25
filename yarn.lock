@@ -1503,6 +1503,20 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@klever/kleverweb@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@klever/kleverweb/-/kleverweb-1.0.2.tgz#82c38893188b368de0c74087e9336387e817e931"
+  integrity sha512-WVDD1J2YLCccojFp0FbMAh9bh+27xDcAZS5eE/04RfTU8lFkNWXdpgAH2IXPacMeM4CcxGrsrbNrFXEL2/yffg==
+  dependencies:
+    "@protobuf-ts/plugin" "^2.7.0"
+
+"@klever/sdk@^3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@klever/sdk/-/sdk-3.1.4.tgz#af7f45b4be340ef73fde149d42fcc1d3d866d96d"
+  integrity sha512-nf8uNCYMWbZhduQW9OM7YI6qcjWfZTA+Aau3+uXYSHqnyD0d8et9ETkcegMIz2+SJAUC+xmNDEdL78yLOKjCVA==
+  dependencies:
+    "@klever/kleverweb" "^1.0.2"
+
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
@@ -1543,6 +1557,42 @@
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
     source-map "^0.7.3"
+
+"@protobuf-ts/plugin-framework@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@protobuf-ts/plugin-framework/-/plugin-framework-2.8.0.tgz#ef63a3992b4dcf4492f5bc7c93a30d1944bf0fe6"
+  integrity sha512-MjsV+gdcFUSIJ8NuogTGESbXbpp9C5ftUIMytWCWWYbkSEeWCKnl+CBrQDDHVWQ4hCwYKA2D6jdmFyOlAkrXqQ==
+  dependencies:
+    "@protobuf-ts/runtime" "^2.8.0"
+    typescript "^3.9"
+
+"@protobuf-ts/plugin@^2.7.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@protobuf-ts/plugin/-/plugin-2.8.0.tgz#6021282c497842e87f7edddee9753699cc958c90"
+  integrity sha512-Jcl70WPVZdIYnLtjz7uoANzAPIN2awHUV1NfXXK2ZIkha+cPaP1IwETq38N1o1q7hvVC8uWhbJ2kqTcmvQWFPg==
+  dependencies:
+    "@protobuf-ts/plugin-framework" "^2.8.0"
+    "@protobuf-ts/protoc" "^2.8.0"
+    "@protobuf-ts/runtime" "^2.8.0"
+    "@protobuf-ts/runtime-rpc" "^2.8.0"
+    typescript "^3.9"
+
+"@protobuf-ts/protoc@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@protobuf-ts/protoc/-/protoc-2.8.0.tgz#fd472e26bc10937ac6af1a894c925cf55dcaf802"
+  integrity sha512-x2NMHDmeJrk+rbfqLA9uWXIYXjUgL5Qoayu7DZcV16ILSjyi+31Nh/B1WH+tIih81KgPEq/G/i6bpCEeWsK/Yw==
+
+"@protobuf-ts/runtime-rpc@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@protobuf-ts/runtime-rpc/-/runtime-rpc-2.8.0.tgz#64053eeb7f04ff8453091096fa7322ff5ff37069"
+  integrity sha512-B8pVorf2BvZZiCcX5paoYIKPDwkrdNP/pmJDKTIQ1D+6Yab1e6caW6vAU4RYJmb0McZBvNhSxvnkwAgPlKaFjw==
+  dependencies:
+    "@protobuf-ts/runtime" "^2.8.0"
+
+"@protobuf-ts/runtime@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@protobuf-ts/runtime/-/runtime-2.8.0.tgz#e5616704fa3310430e35e38d9d291140a9fb2afb"
+  integrity sha512-70LH3oLG5E608jTP+v4nYyinvrpEgkGy0p8gJsog3fwlEuJgARldOQAk+ci5StZUOXHB7MVw0vZ/T0shqIe/pw==
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
@@ -8440,6 +8490,11 @@ typedarray-to-buffer@^3.1.5:
   integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   dependencies:
     is-typedarray "^1.0.0"
+
+typescript@^3.9:
+  version "3.9.10"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
+  integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
 
 typescript@^4.4.2:
   version "4.7.4"

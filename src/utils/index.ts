@@ -36,3 +36,42 @@ export const stringEllipsis = (inputString: string, maxLen: number): string => {
       )}`
     : inputString;
 };
+
+export const doIf = async (
+  success: () => any,
+  failure: () => any,
+  condition: () => boolean,
+  timeoutMS = 5000,
+  intervalMS = 100,
+): Promise<void> => {
+  let interval: any;
+
+  const IntervalPromise = new Promise(resolve => {
+    const interval = setInterval(() => {
+      if (condition()) {
+        resolve(
+          (() => {
+            success();
+            clearInterval(interval);
+            clearTimeout(timeout);
+          })(),
+        );
+      }
+    }, intervalMS);
+  });
+
+  let timeout: any;
+
+  const TimeoutPromise = new Promise(resolve => {
+    timeout = setTimeout(() => {
+      resolve(
+        (() => {
+          failure();
+          clearInterval(interval);
+        })(),
+      );
+    }, timeoutMS);
+  });
+
+  await Promise.race([IntervalPromise, TimeoutPromise]);
+};

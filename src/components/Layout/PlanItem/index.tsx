@@ -21,6 +21,10 @@ const PlanItem: React.FC<IPlanItem> = ({
   productLink,
   main,
 }) => {
+  const handleCrypto = () => {
+    //handle transfer
+  };
+
   return (
     <Container>
       <Title>{name}</Title>
@@ -45,7 +49,10 @@ const PlanItem: React.FC<IPlanItem> = ({
       <Price>{price ? `$${price}/Month` : 'Free!'}</Price>
       {!!price && (
         <PaymentContainer>
-          <Button styleType={`${main ? 'primary' : 'outlined'}`}>
+          <Button
+            styleType={`${main ? 'primary' : 'outlined'}`}
+            onClick={handleCrypto}
+          >
             Pay with Crypto
           </Button>
           <StyledLink
