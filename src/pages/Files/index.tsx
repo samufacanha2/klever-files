@@ -31,7 +31,7 @@ import {
 
 import { useWidth } from 'contexts/width';
 import plans from 'mocks/plans';
-import { MdOutlineFileDownload, MdOutlineSettings } from 'react-icons/md';
+import { MdOutlineFileDownload } from 'react-icons/md';
 import { formatSize, stringEllipsis } from 'utils';
 
 const Files: React.FC = () => {
@@ -148,7 +148,7 @@ const Files: React.FC = () => {
               <RemainingStorage>
                 Remaining Storage:
                 <Remaining>
-                  {formatSize((plan.storage - getTotalStorage()) / 1000)}{' '}
+                  {formatSize(plan.storage - getTotalStorage())}{' '}
                 </Remaining>
               </RemainingStorage>
             </PlanInfo>
@@ -181,13 +181,6 @@ const Files: React.FC = () => {
                   </ListItem>
                   <ListItem>
                     <ItemContent>{formatSize(file.size)}</ItemContent>
-                  </ListItem>
-                  <ListItem>
-                    <ItemContent>
-                      <ActionsButton>
-                        <MdOutlineSettings />
-                      </ActionsButton>
-                    </ItemContent>
                   </ListItem>
                 </ListRow>
               ))}

@@ -24,8 +24,6 @@ export const formatSize = (number: number): string => {
       .reverse()
       .find(i => number >= i.value) || lookup[0];
 
-  console.log(number);
-
   return `${(number / item.value).toFixed(2).replace(regex, '$1')} ${
     item.symbol
   }B`;
@@ -84,12 +82,16 @@ export const asyncDoIf = async (
   condition: () => Promise<boolean>,
   tries = 10,
 ): Promise<void> => {
-  for (let i = 0; i < tries; i++) {
+  const array = Array.from({ length: tries }, (_, i) => i);
+
+  for (const i of array) {
+    console.log(i);
     const result = await condition();
     if (result) {
       success();
       return;
     }
+    await new Promise(resolve => setTimeout(resolve, 500));
   }
   failure();
   return;

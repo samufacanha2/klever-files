@@ -1,1 +1,1 @@
-export const fileHeaders = ['Name', 'Hash', 'Size', 'Actions'];
+export const fileHeaders = ['Name', 'Hash', 'Size'];

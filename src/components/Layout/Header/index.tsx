@@ -125,7 +125,7 @@ const Navbar: React.FC = () => {
         <Content>
           <StyledLink to="/files">
             <Logo onClick={handleClose}>
-              <img src={logo} alt="Logo" width="215" height="29" />
+              <img src={logo} alt="Logo" />
             </Logo>
           </StyledLink>
 
@@ -169,6 +169,16 @@ const Navbar: React.FC = () => {
             />
           ))}
         </MobileNavbarItemList>
+        <OptionsContainer>
+          <ConnectWallet />
+
+          <StyledLink to="/">
+            <Item selected={false}>
+              <IoIosLogOut />
+              <span>Logout</span>
+            </Item>
+          </StyledLink>
+        </OptionsContainer>
       </MobileContent>
     </>
   );

@@ -20,15 +20,13 @@ import {
   UnderText,
 } from './styles';
 
-const checkTxStatus = async (response: any) => {
-  try {
-    const hash = response.data.txsHashes[0];
-    console.log(hash);
-    const txResponse = await api.get({ route: `transaction/${hash}` });
-    return txResponse.data.transaction.status === 'success';
-  } catch (e) {
+const checkTxStatus = async (response: any): Promise<boolean> => {
+  const hash = response.data.txsHashes[0];
+  const txResponse = await api.get({ route: `transaction/${hash}` });
+  if (txResponse.error !== '') {
     return false;
   }
+  return txResponse.data.transaction.status === 'success';
 };
 
 const PlanItem: React.FC<IPlanItem> = ({
@@ -80,7 +78,7 @@ const PlanItem: React.FC<IPlanItem> = ({
 
         toast.error('Transaction failed');
       },
-      async () => await checkTxStatus(response),
+      () => checkTxStatus(response),
       20,
     );
   };
