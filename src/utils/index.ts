@@ -42,7 +42,7 @@ export const stringEllipsis = (inputString: string, maxLen: number): string => {
 export const doIf = async (
   success: () => any,
   failure: () => any,
-  condition: () => boolean | Promise<boolean>,
+  condition: () => boolean,
   timeoutMS = 5000,
   intervalMS = 100,
 ): Promise<void> => {
@@ -76,4 +76,21 @@ export const doIf = async (
   });
 
   await Promise.race([IntervalPromise, TimeoutPromise]);
+};
+
+export const asyncDoIf = async (
+  success: () => any,
+  failure: () => any,
+  condition: () => Promise<boolean>,
+  tries = 10,
+): Promise<void> => {
+  for (let i = 0; i < tries; i++) {
+    const result = await condition();
+    if (result) {
+      success();
+      return;
+    }
+  }
+  failure();
+  return;
 };
