@@ -51,6 +51,10 @@ const PlanItem: React.FC<IPlanItem> = ({
       return;
     }
 
+    if (price === undefined) {
+      return;
+    }
+
     const payload: ITransfer = {
       amount: price * 10 ** 2,
       receiver: process.env.REACT_APP_RECEIVER,
@@ -112,21 +116,27 @@ const PlanItem: React.FC<IPlanItem> = ({
             </ListItem>
           ))}
         </List>
-        <Price>{price ? `$${price}/Month` : 'Free!'}</Price>
-        {!!price && (
+        <Price>
+          {price === undefined
+            ? 'Custom price'
+            : `${price === 0 ? 'Free!' : `$${price}/Month`}`}
+        </Price>
+        {price !== 0 && (
           <PaymentContainer>
             <Button
               styleType={`${main ? 'primary' : 'outlined'}`}
               onClick={handleCrypto}
             >
-              Pay with Crypto
+              {price === undefined ? 'Contact us' : 'Pay with Crypto'}
             </Button>
             <StyledLink
               href={productLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <UnderText>Pay with credit card</UnderText>
+              <UnderText>
+                {price !== undefined && price > 0 ? 'Pay with credit card' : ''}
+              </UnderText>
             </StyledLink>
           </PaymentContainer>
         )}

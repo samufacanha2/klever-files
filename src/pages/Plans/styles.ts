@@ -19,7 +19,7 @@ export const PlansBody = styled.div`
   width: 100%;
   display: flex;
 
-  gap: 3rem;
+  gap: 1.4rem;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;

@@ -8,7 +8,7 @@ export interface IPlanItem {
   name: string;
   pros: string[];
   cons?: string[];
-  price: number;
+  price?: number;
   storage: number;
   productLink?: string;
   main?: boolean;
