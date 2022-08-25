@@ -128,7 +128,25 @@ const Files: React.FC = () => {
           onDragEnter={handleDragEnter}
           onDragLeave={handleDragLeave}
         >
-          <SectionHeader>Files</SectionHeader>
+          <SectionHeader>
+            Files
+            <PlanInfo>
+              <CurrentPlan>
+                Your Plan:
+                <Plan to="/plans">{plan.name}</Plan>
+              </CurrentPlan>
+
+              <RemainingStorage>
+                Remaining Storage:
+                <Remaining>
+                  {((plan.storage - getTotalStorage()) / 1000)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
+                  KB
+                </Remaining>
+              </RemainingStorage>
+            </PlanInfo>
+          </SectionHeader>
 
           <ListContainer>
             <ListHeaders>
@@ -182,18 +200,6 @@ const Files: React.FC = () => {
             </UploadContainer>
             {isUploading && <Loader inline />}
           </UploadLoaderContainer>
-
-          <PlanInfo>
-            <CurrentPlan>
-              Your Plan:
-              <Plan to="/plans">{plan.name}</Plan>
-            </CurrentPlan>
-
-            <RemainingStorage>
-              Remaining Storage:
-              <Remaining>{plan.storage - getTotalStorage()} B</Remaining>
-            </RemainingStorage>
-          </PlanInfo>
         </Container>
       ) : (
         <LoadingContainer>

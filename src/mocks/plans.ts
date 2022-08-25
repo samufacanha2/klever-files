@@ -12,7 +12,7 @@ const plans: IPlanItem[] = [
       'Streaming videominutes stored',
       'Streaming video minutes viewed',
     ],
-    storage: 50 * 10 ** 6,
+    storage: 1 * 10 ** 9,
     price: 0,
   },
   {
@@ -30,7 +30,7 @@ const plans: IPlanItem[] = [
       '500 Streaming video minutes viewed',
     ],
     price: 20.0,
-    storage: 20 * 10 ** 9,
+    storage: 50 * 10 ** 9,
   },
   {
     name: 'Premium',
@@ -47,7 +47,7 @@ const plans: IPlanItem[] = [
       '5,000 Streaming video minutes viewed',
     ],
     price: 100.0,
-    storage: 100 * 10 ** 9,
+    storage: 250 * 10 ** 9,
   },
   {
     name: 'Enterprise',
@@ -64,7 +64,7 @@ const plans: IPlanItem[] = [
       '50,000 Streaming video minutes viewed',
     ],
     price: 1000.0,
-    storage: 1000 * 10 ** 9,
+    storage: 2500 * 10 ** 9,
   },
 ];
 

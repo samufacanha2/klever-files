@@ -123,6 +123,10 @@ export const SectionHeader = styled.div`
   color: ${props => props.theme.white};
   font-size: 2.5rem;
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
 
   opacity: 0;
   animation: ${FadeIn} 0.3s ease-in-out 0.1s forwards;
@@ -143,12 +147,15 @@ export const PlanInfo = styled.div`
 `;
 
 export const CurrentPlan = styled.div`
+  color: ${props => props.theme.card.text};
+  font-size: 1rem;
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
 `;
 
 export const Plan = styled(Link)`
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.card.text};
   text-decoration: none;
   &:hover {
     text-decoration: underline;
@@ -156,12 +163,15 @@ export const Plan = styled(Link)`
 `;
 
 export const RemainingStorage = styled.div`
+  color: ${props => props.theme.card.text};
+  font-size: 1rem;
   display: flex;
   gap: 0.5rem;
 `;
 export const Remaining = styled.div``;
 
 export const LoadingContainer = styled.div`
+  color: ${props => props.theme.card.text};
   width: 100%;
   height: calc(100vh - 10rem);
   display: grid;
