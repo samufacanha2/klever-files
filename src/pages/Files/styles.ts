@@ -119,7 +119,7 @@ export const ListRow = styled.tr`
 `;
 
 export const ListItem = styled.td`
-  padding: 1rem 2rem;
+  padding: 1rem;
   color: ${props => props.theme.card.text};
 `;
 
@@ -188,4 +188,18 @@ export const LoadingContainer = styled.div`
   height: calc(100vh - 10rem);
   display: grid;
   place-items: center;
+`;
+
+export const NameContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const DownloadButton = styled.button`
+  padding: 0;
+  border: none;
+  background: none;
+  color: ${props => props.theme.card.text};
 `;

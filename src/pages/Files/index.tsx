@@ -8,6 +8,7 @@ import { IFile } from 'types';
 import {
   Container,
   CurrentPlan,
+  DownloadButton,
   HashItem,
   InputFile,
   ListBody,
@@ -17,6 +18,7 @@ import {
   ListItem,
   ListRow,
   LoadingContainer,
+  NameContent,
   Plan,
   PlanInfo,
   Remaining,
@@ -28,6 +30,7 @@ import {
 
 import { useWidth } from 'contexts/width';
 import plans from 'mocks/plans';
+import { MdOutlineFileDownload } from 'react-icons/md';
 import { formatSize, stringEllipsis } from 'utils';
 
 const Files: React.FC = () => {
@@ -160,7 +163,14 @@ const Files: React.FC = () => {
             <ListBody>
               {files.map(file => (
                 <ListRow key={file.hash}>
-                  <ListItem>{file.name}</ListItem>
+                  <ListItem>
+                    <NameContent>
+                      <DownloadButton>
+                        <MdOutlineFileDownload size={24} />
+                      </DownloadButton>
+                      {file.name}
+                    </NameContent>
+                  </ListItem>
                   <ListItem>
                     <HashItem>
                       {isMobile ? stringEllipsis(file.hash, 18) : file.hash}
