@@ -122,7 +122,7 @@ const Navbar: React.FC = () => {
     <>
       <Container ref={mobileNavbar}>
         <Content>
-          <StyledLink to="/">
+          <StyledLink to="/files">
             <Logo onClick={handleClose}>
               <img src={logo} alt="Logo" width="215" height="29" />
             </Logo>
