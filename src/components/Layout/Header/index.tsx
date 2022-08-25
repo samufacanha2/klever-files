@@ -135,7 +135,7 @@ const Navbar: React.FC = () => {
               ))}
             </IconsMenu>
             <Logout>
-              <StyledLink to="/login">
+              <StyledLink to="/">
                 <Item selected={false}>
                   <IoIosLogOut />
                   <span>Logout</span>

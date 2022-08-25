@@ -17,6 +17,7 @@ export const Body = styled.main`
   display: block;
   margin: 0 auto;
   max-width: ${props => props.theme.maxWidth};
+  width: 100%;
 `;
 
 export const NavItem = styled.div``;

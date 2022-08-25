@@ -13,8 +13,8 @@ export const navbarPadding = '1rem 17.5rem';
 
 const navbarItems: INavbarItem[] = [
   {
-    name: 'List',
-    pathTo: '/list',
+    name: 'Files',
+    pathTo: '/files',
     Icon: IoMdList,
   },
   {

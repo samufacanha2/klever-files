@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100vw;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -52,3 +53,33 @@ export const SectionHeader = styled.div`
   font-size: 2.5rem;
   font-weight: bold;
 `;
+
+export const PlanInfo = styled.div`
+  color: ${props => props.theme.white};
+
+  font-size: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+`;
+
+export const CurrentPlan = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+export const Plan = styled(Link)`
+  color: ${props => props.theme.white};
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const RemainingStorage = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+export const Remaining = styled.div``;
