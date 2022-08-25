@@ -45,16 +45,16 @@ export const getHost = (
 ): string => {
   const hostService = {
     [Service.PROXY]:
-      process.env.DEFAULT_API_HOST || 'https://api.testnet.klever.finance',
+      process.env.REACT_APP_API_HOST || 'https://api.testnet.klever.finance',
     [Service.PRICE]:
-      process.env.DEFAULT_PRICE_HOST ||
+      process.env.REACT_APP_PRICE_HOST ||
       'https://prices.endpoints.services.klever.io/v1',
     [Service.NODE]:
-      process.env.DEFAULT_NODE_HOST || 'https://node.testnet.klever.finance',
+      process.env.REACT_APP_NODE_HOST || 'https://node.testnet.klever.finance',
     [Service.GECKO]: 'https://api.coingecko.com/api/v3',
     [Service.EXPLORER]:
-      process.env.DEFAULT_EXPLORER_HOST || 'https://testnet.kleverscan.org',
-    [Service.IPFS]: 'https://ipfs.io/ipfs',
+      process.env.REACT_APP_EXPLORER_HOST || 'https://testnet.kleverscan.org',
+    [Service.IPFS]: process.env.REACT_APP_IPFS_API || 'https://ipfs.io/ipfs',
   };
 
   let host = hostService[service || 0];

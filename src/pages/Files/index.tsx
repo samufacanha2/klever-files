@@ -77,6 +77,19 @@ const Files: React.FC = () => {
           resolve();
         }, 2000),
       );
+
+      // const newFileResponse = api.post({
+      //   route: '',
+      //   service: Service.IPFS,
+      //   body: {
+      //     path: `hackathon/${file[0].name}`,
+      //   },
+      // });
+
+      const formData = new FormData();
+      await formData.append('file', file[0]);
+      console.log(formData);
+
       const newFile: IFile = {
         name: file[0].name,
         hash: `${files[0].hash.split('-')[0]}-${files.length}`,
