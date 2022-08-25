@@ -10,4 +10,6 @@ export interface IPlanItem {
   cons?: string[];
   price: number;
   storage: number;
+  productLink?: string;
+  main?: boolean;
 }

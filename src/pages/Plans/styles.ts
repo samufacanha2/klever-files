@@ -20,6 +20,12 @@ export const PlansBody = styled.div`
   display: flex;
 
   gap: 3rem;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 export const SectionHeader = styled.div`

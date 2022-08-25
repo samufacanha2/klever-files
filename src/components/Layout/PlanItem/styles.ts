@@ -17,6 +17,10 @@ export const Container = styled.div`
 
   opacity: 0;
   animation: ${FadeIn} 0.3s ease-in-out 0.15s forwards;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.div`
@@ -42,4 +46,23 @@ export const ListItem = styled.div`
 
 export const Status = styled.div`
   padding-right: 8px;
+`;
+
+export const StyledLink = styled.a``;
+
+export const UnderText = styled.div`
+  text-decoration: underline;
+  font-size: 0.8rem;
+  cursor: pointer;
+  user-select: none;
+
+  color: ${props => props.theme.card.text};
+`;
+
+export const PaymentContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
 `;

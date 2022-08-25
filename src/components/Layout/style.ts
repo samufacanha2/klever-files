@@ -9,6 +9,10 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 768px) {
+    max-width: 100vw;
+    overflow: hidden;
+  }
 `;
 
 export const Body = styled.main`

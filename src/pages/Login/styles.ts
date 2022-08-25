@@ -27,6 +27,10 @@ export const RightSideContent = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Input = styled.input`
@@ -44,6 +48,10 @@ export const Input = styled.input`
 export const LoginForm = styled.form`
   width: 40%;
   animation: ${FadeIn} 0.3s ease-in-out;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 export const InputDiv = styled.div`

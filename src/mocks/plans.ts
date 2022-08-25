@@ -29,8 +29,9 @@ const plans: IPlanItem[] = [
       '50 Streaming videominutes stored',
       '500 Streaming video minutes viewed',
     ],
-    price: 20.0,
+    price: 15.0,
     storage: 50 * 10 ** 9,
+    productLink: 'https://buy.stripe.com/test_dR67tZ9sx0v7fJuaEG',
   },
   {
     name: 'Premium',
@@ -46,8 +47,10 @@ const plans: IPlanItem[] = [
       '500 Streaming videominutes stored',
       '5,000 Streaming video minutes viewed',
     ],
-    price: 100.0,
+    price: 75.0,
     storage: 250 * 10 ** 9,
+    productLink: 'https://buy.stripe.com/test_6oE7tZfQV3Hj40McMN',
+    main: true,
   },
   {
     name: 'Enterprise',
@@ -63,8 +66,9 @@ const plans: IPlanItem[] = [
       '5,000 Streaming videominutes stored',
       '50,000 Streaming video minutes viewed',
     ],
-    price: 1000.0,
+    price: 750.0,
     storage: 2500 * 10 ** 9,
+    productLink: 'https://buy.stripe.com/test_eVa8y39sx6TveFqcMM',
   },
 ];
 

@@ -20,6 +20,10 @@ export const UploadContainer = styled.div`
   opacity: 0;
 
   animation: ${FadeIn} 0.3s ease-in-out 0.2s forwards;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 export const UploadLoaderContainer = styled.div`
   display: flex;
@@ -107,6 +111,11 @@ export const ListHeader = styled.th`
 export const ListRow = styled.tr`
   backdrop-filter: brightness(1.25);
   border-radius: 0.5rem;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
 `;
 
 export const ListItem = styled.td`
@@ -130,6 +139,9 @@ export const SectionHeader = styled.div`
 
   opacity: 0;
   animation: ${FadeIn} 0.3s ease-in-out 0.1s forwards;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const PlanInfo = styled.div`
@@ -150,7 +162,7 @@ export const CurrentPlan = styled.div`
   color: ${props => props.theme.card.text};
   font-size: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
 `;
 

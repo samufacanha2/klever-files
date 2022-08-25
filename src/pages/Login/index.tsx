@@ -13,30 +13,33 @@ import {
 } from './styles';
 
 import klv from 'assets/klv.svg';
+import { useWidth } from 'contexts/width';
 import { useNavigate } from 'react-router';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
+  const { isMobile } = useWidth();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    console.log('test');
     await new Promise<void>(resolve =>
       setTimeout(() => {
         resolve(navigate('/files'));
       }, 500),
     );
-    console.log('test2');
     setLoading(false);
   };
 
   return (
     <Container>
-      <LeftSideImageContainer>
-        <img src={klv} alt="klv" width="215" height="30" />
-      </LeftSideImageContainer>
+      {!isMobile && (
+        <LeftSideImageContainer>
+          <img src={klv} alt="klv" width="215" height="30" />
+        </LeftSideImageContainer>
+      )}
 
       <RightSideContent>
         <LoginForm onSubmit={handleSubmit}>

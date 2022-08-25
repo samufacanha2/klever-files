@@ -26,7 +26,9 @@ import {
   UploadLoaderContainer,
 } from './styles';
 
+import { useWidth } from 'contexts/width';
 import plans from 'mocks/plans';
+import { formatSize, stringEllipsis } from 'utils';
 
 const Files: React.FC = () => {
   const [isDragging, setDragging] = useState(false);
@@ -34,6 +36,8 @@ const Files: React.FC = () => {
 
   const [isUploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const { isMobile } = useWidth();
 
   const plan = plans[0];
 
@@ -139,31 +143,31 @@ const Files: React.FC = () => {
               <RemainingStorage>
                 Remaining Storage:
                 <Remaining>
-                  {((plan.storage - getTotalStorage()) / 1000)
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
-                  KB
+                  {formatSize((plan.storage - getTotalStorage()) / 1000)}{' '}
                 </Remaining>
               </RemainingStorage>
             </PlanInfo>
           </SectionHeader>
 
           <ListContainer>
-            <ListHeaders>
-              {fileHeaders.map(header => (
-                <ListHeader>{header}</ListHeader>
-              ))}
-            </ListHeaders>
+            {!isMobile && (
+              <ListHeaders>
+                {fileHeaders.map(header => (
+                  <ListHeader>{header}</ListHeader>
+                ))}
+              </ListHeaders>
+            )}
             <ListBody>
               {files.map(file => (
                 <ListRow key={file.hash}>
                   <ListItem>{file.name}</ListItem>
                   <ListItem>
                     <HashItem>
-                      {file.hash} <Copy data={file.hash} />
+                      {isMobile ? stringEllipsis(file.hash, 18) : file.hash}
+                      <Copy data={file.hash} />
                     </HashItem>
                   </ListItem>
-                  <ListItem>{file.size}B</ListItem>
+                  <ListItem>{formatSize(file.size)}</ListItem>
                   <ListItem>
                     <a href="#">Config</a>
                   </ListItem>

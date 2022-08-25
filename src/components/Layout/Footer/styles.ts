@@ -17,7 +17,8 @@ export const Container = styled.footer`
   border-top: 1px solid ${({ theme }) => theme.background};
 
   @media (max-width: 768px) {
-    padding: 5rem 3rem;
+    padding: 5rem 1rem;
+    width: 100%;
 
     flex-direction: column;
   }
