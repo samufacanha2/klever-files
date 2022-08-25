@@ -48,19 +48,6 @@ const plans: IPlanItem[] = [
     storage: 3000 * 10 ** 9,
     productLink: 'https://buy.stripe.com/test_eVa8y39sx6TveFqcMM',
   },
-  {
-    name: 'Custom',
-    pros: [
-      'Custom Total Storage',
-      'Custom Bandwidth',
-      'Custom Requests Limit',
-      'Access to Submarining',
-      'Custom File Optimizations',
-    ],
-    price: undefined,
-    storage: 2500 * 10 ** 9,
-    productLink: 'https://buy.stripe.com/test_eVa8y39sx6TveFqcMM',
-  },
 ];
 
 export default plans;
