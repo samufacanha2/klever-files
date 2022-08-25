@@ -14,7 +14,6 @@ declare global {
     kleverWeb: any;
   }
 }
-
 const App: React.FC = () => (
   <WidthProvider>
     <ThemeProvider theme={dark}>

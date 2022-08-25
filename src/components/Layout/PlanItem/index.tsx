@@ -1,6 +1,12 @@
+import { core, ITransfer, TransactionType } from '@klever/sdk';
 import Button from 'components/Button';
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+import api from 'services/api';
 import { IPlanItem } from 'types';
+import { doIf } from 'utils';
+import { useDidUpdateEffect } from 'utils/hooks';
 import {
   Container,
   List,
@@ -21,9 +27,54 @@ const PlanItem: React.FC<IPlanItem> = ({
   productLink,
   main,
 }) => {
-  const handleCrypto = () => {
-    //handle transfer
+  const [sucessful, setSucessful] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleCrypto = async () => {
+    if (!process.env.REACT_APP_RECEIVER) {
+      toast.error('Please config a receiver address');
+      return;
+    }
+
+    const payload: ITransfer = {
+      amount: price * 10 ** 6,
+      receiver: process.env.REACT_APP_RECEIVER,
+      kda: 'TUSD-13T0',
+    };
+
+    const unsignedTx = await core.buildTransaction([
+      {
+        payload,
+        type: TransactionType.Transfer,
+      },
+    ]);
+
+    const signedTx = await core.signTransaction(unsignedTx);
+
+    const response = await core.broadcastTransactions([signedTx]);
+    toast.success('Transaction broadcasted');
+
+    const checkTxStatus = async () => {
+      const hash = response.data.txsHashes[0];
+      const txResponse = await api.get({ route: `/transactions/${hash}` });
+      return txResponse.data.transaction.status === 'success';
+    };
+
+    doIf(
+      () => setSucessful(true),
+      () => setSucessful(false),
+      async () => await checkTxStatus(),
+    );
   };
+
+  useDidUpdateEffect(() => {
+    if (sucessful) {
+      toast.success('Transaction successful');
+      sessionStorage.setItem('plan', name);
+      navigate('/files');
+    }
+  }, [sucessful]);
 
   return (
     <Container>

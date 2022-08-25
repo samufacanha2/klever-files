@@ -39,7 +39,8 @@ const Files: React.FC = () => {
 
   const { isMobile } = useWidth();
 
-  const plan = plans[0];
+  const planName = sessionStorage.getItem('plan') || 'free';
+  const plan = plans.find(({ name }) => name === planName) || plans[0];
 
   const FetchFiles = useCallback(async () => {
     setLoading(true);
