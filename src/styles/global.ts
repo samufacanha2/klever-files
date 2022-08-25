@@ -55,10 +55,6 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-  #root{
-    width: 100vw;
-    height: 100vh;
-  }
     ::-webkit-scrollbar {
     width: 0.3em;
     z-index: 1;

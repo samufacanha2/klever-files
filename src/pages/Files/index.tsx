@@ -1,8 +1,12 @@
 import Button from 'components/Button';
+import Copy from 'components/Copy';
+import { fileHeaders } from 'configs/file/headers';
+import files from 'mocks/files';
 import React from 'react';
 import {
   Container,
   CurrentPlan,
+  HashItem,
   ListBody,
   ListContainer,
   ListHeader,
@@ -27,32 +31,27 @@ const Files: React.FC = () => {
 
       <ListContainer>
         <ListHeaders>
-          <ListHeader>Name</ListHeader>
-          <ListHeader>Size</ListHeader>
-          <ListHeader>Actions</ListHeader>
+          {fileHeaders.map(header => (
+            <ListHeader>{header}</ListHeader>
+          ))}
         </ListHeaders>
         <ListBody>
-          <ListRow>
-            <ListItem>Test.png</ListItem>
-            <ListItem>42 KB</ListItem>
-            <ListItem>
-              <a href="#">Config</a>
-            </ListItem>
-          </ListRow>
-          <ListRow>
-            <ListItem>Test.jpg</ListItem>
-            <ListItem>42 KB</ListItem>
-            <ListItem>
-              <a href="#">Config</a>
-            </ListItem>
-          </ListRow>
-          <ListRow>
-            <ListItem>Teste.webp</ListItem>
-            <ListItem>42 KB</ListItem>
-            <ListItem>
-              <a href="#">Config</a>
-            </ListItem>
-          </ListRow>
+          {files.map(file => (
+            <ListRow>
+              <ListItem>
+                {file.name}.{file.extension}
+              </ListItem>
+              <ListItem>
+                <HashItem>
+                  {file.hash} <Copy data={file.hash} />
+                </HashItem>
+              </ListItem>
+              <ListItem>{file.size}B</ListItem>
+              <ListItem>
+                <a href="#">Config</a>
+              </ListItem>
+            </ListRow>
+          ))}
         </ListBody>
       </ListContainer>
 

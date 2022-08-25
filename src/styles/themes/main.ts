@@ -71,9 +71,9 @@ const main = {
 
   card: {
     background: '#222345',
+    itemBackground: '#595C98',
 
     text: '#C6C7EB',
-    secondaryText: '#595C98',
     darkText: '#7B7DB2',
 
     border: '#7B7DB2',
