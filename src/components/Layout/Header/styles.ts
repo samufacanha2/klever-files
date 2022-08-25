@@ -36,7 +36,7 @@ export const Content = styled.div`
   flex-direction: row;
   align-items: center;
 
-  gap: 0.5rem;
+  gap: 1.5rem;
 
   max-width: ${props => props.theme.maxWidth};
 
@@ -46,7 +46,10 @@ export const Content = styled.div`
 `;
 
 export const Logo = styled.div`
-  margin-right: 0.5rem;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
 
   cursor: pointer;
 `;
