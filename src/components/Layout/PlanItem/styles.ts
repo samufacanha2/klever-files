@@ -23,3 +23,13 @@ export const Price = styled.div`
 export const List = styled.ul`
   list-style: none;
 `;
+
+export const ListItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 8px;
+`;
+
+export const Status = styled.div`
+  padding-right: 8px;
+`;
