@@ -3,8 +3,12 @@ import Input from 'components/Input';
 import React, { useState } from 'react';
 import {
   Container,
+  ForgotPassword,
+  InputDiv,
   LeftSideImageContainer,
   LoginForm,
+  RegisterButton,
+  RegisterContent,
   RightSideContent,
 } from './styles';
 
@@ -36,11 +40,20 @@ const Login: React.FC = () => {
 
       <RightSideContent>
         <LoginForm onSubmit={handleSubmit}>
-          <h1>Login</h1>
-          <Input type="text" placeholder="Email" title="Email" />
-          <Input type="password" placeholder="Password" title="Password" />
-          <Button type="submit">{loading ? 'Loading...' : 'Login'}</Button>
+          <InputDiv>
+            <h1>Login</h1>
+            <Input type="text" placeholder="Email" title="Email" />
+            <Input type="password" placeholder="Password" title="Password" />
+          </InputDiv>
+          <InputDiv>
+            <ForgotPassword type="button">I forgot my password</ForgotPassword>
+            <Button type="submit">{loading ? 'Loading...' : 'Login'}</Button>
+          </InputDiv>
         </LoginForm>
+        <RegisterContent>
+          <p>Do not have an account?</p>
+          <RegisterButton>Register</RegisterButton>
+        </RegisterContent>
       </RightSideContent>
     </Container>
   );

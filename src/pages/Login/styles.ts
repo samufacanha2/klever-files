@@ -26,6 +26,7 @@ export const RightSideContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2.5rem;
 `;
 
 export const Input = styled.input`
@@ -42,10 +43,44 @@ export const Input = styled.input`
 
 export const LoginForm = styled.form`
   width: 40%;
+  animation: ${FadeIn} 0.3s ease-in-out;
+`;
+
+export const InputDiv = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   gap: 2.5rem;
-  animation: ${FadeIn} 0.3s ease-in-out;
+`;
+
+export const ForgotPassword = styled.button`
+  width: 100%;
+  font-weight: 600;
+  padding: 0;
+  margin-top: 8px;
+  border: none;
+  background: none;
+  font-size: 0.8rem;
+  float: right;
+  color: ${({ theme }) => theme.input.border.dark};
+  text-align: right;
+`;
+
+export const RegisterContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.input.border.dark};
+`;
+
+export const RegisterButton = styled.button`
+  font-weight: bold;
+  padding: 0;
+  border: none;
+  background: none;
+  color: ${({ theme }) => theme.input.border.dark};
 `;
