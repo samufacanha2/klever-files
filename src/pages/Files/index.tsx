@@ -10,6 +10,7 @@ import {
   Container,
   CurrentPlan,
   HashItem,
+  HashLink,
   InputFile,
   ItemContent,
   ListBody,
@@ -247,7 +248,13 @@ const Files: React.FC = () => {
                   </ListItem>
                   <ListItem>
                     <HashItem>
-                      {isMobile ? stringEllipsis(file.hash, 18) : file.hash}
+                      <HashLink
+                        href={`https://ipfs.io/ipfs/${file.hash}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {isMobile ? stringEllipsis(file.hash, 18) : file.hash}
+                      </HashLink>
                       <Copy data={file.hash} />
                     </HashItem>
                   </ListItem>

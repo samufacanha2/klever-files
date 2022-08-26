@@ -1,3 +1,4 @@
+import { darken } from 'polished';
 import styled from 'styled-components';
 import { FadeIn } from 'styles/global';
 
@@ -10,11 +11,21 @@ export const Container = styled.div`
 export const LeftSideImageContainer = styled.div`
   height: 100%;
   width: 75%;
-  background-color: ${props => props.theme.primary};
+  background-image: linear-gradient(
+    to right,
+    ${props => darken(0.3, props.theme.primary)},
+    ${props => props.theme.background}
+  );
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  filter: opacity(0.8);
+
+  img {
+    height: 100%;
+    filter: opacity(0.4);
+  }
 `;
 
 export const RightSideContent = styled.div`

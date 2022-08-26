@@ -12,7 +12,7 @@ import {
   RightSideContent,
 } from './styles';
 
-import klv from 'assets/klv.svg';
+import bg from 'assets/bg.png';
 import { useWidth } from 'contexts/width';
 import { useNavigate } from 'react-router';
 
@@ -37,7 +37,7 @@ const Login: React.FC = () => {
     <Container>
       {!isMobile && (
         <LeftSideImageContainer>
-          <img src={klv} alt="klv" width="215" height="30" />
+          <img src={bg} alt="bg" />
         </LeftSideImageContainer>
       )}
 

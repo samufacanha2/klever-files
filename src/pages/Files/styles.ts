@@ -128,6 +128,14 @@ export const HashItem = styled.div`
   gap: 0.5rem;
 `;
 
+export const HashLink = styled.a`
+  color: ${props => props.theme.white};
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export const SectionHeader = styled.div`
   color: ${props => props.theme.white};
   font-size: 2.5rem;
