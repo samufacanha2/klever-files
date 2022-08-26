@@ -19,7 +19,7 @@ const plans: IPlanItem[] = [
     ],
     price: 100.0,
     storage: 70 * 10 ** 9,
-    productLink: 'https://buy.stripe.com/test_dR67tZ9sx0v7fJuaEG',
+    productLink: 'https://buy.stripe.com/test_eVag0vgUZcdP40M3cf',
   },
   {
     name: 'Premium',
@@ -32,7 +32,7 @@ const plans: IPlanItem[] = [
     ],
     price: 500.0,
     storage: 450 * 10 ** 9,
-    productLink: 'https://buy.stripe.com/test_6oE7tZfQV3Hj40McMN',
+    productLink: 'https://buy.stripe.com/test_00g8y3awBelX54Q148',
     main: true,
   },
   {
@@ -46,7 +46,7 @@ const plans: IPlanItem[] = [
     ],
     price: 3000.0,
     storage: 3000 * 10 ** 9,
-    productLink: 'https://buy.stripe.com/test_eVa8y39sx6TveFqcMM',
+    productLink: 'https://buy.stripe.com/test_5kA6pVeMRb9L9l6149',
   },
 ];
 
