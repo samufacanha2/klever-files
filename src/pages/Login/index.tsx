@@ -2,12 +2,12 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 import React, { useState } from 'react';
 import {
+  ButtonsDiv,
   Container,
   ForgotPassword,
   InputDiv,
   LeftSideImageContainer,
   LoginForm,
-  PlansButton,
   RegisterButton,
   RegisterContent,
   RightSideContent,
@@ -72,23 +72,24 @@ const Login: React.FC = () => {
                 name="password"
               />
             </InputDiv>
-            <InputDiv>
+            <ButtonsDiv>
               <ForgotPassword type="button">
                 I forgot my password
               </ForgotPassword>
               <Button type="submit">{loading ? 'Loading...' : 'Login'}</Button>
-            </InputDiv>
+              <Button
+                type="button"
+                styleType="outlined"
+                onClick={() => setModalOpen(true)}
+              >
+                Plans
+              </Button>
+            </ButtonsDiv>
           </LoginForm>
           <RegisterContent>
             <p>Do not have an account?</p>
             <RegisterButton>Register</RegisterButton>
           </RegisterContent>
-
-          <PlansButton>
-            <Button styleType="outlined" onClick={() => setModalOpen(true)}>
-              Plans
-            </Button>
-          </PlansButton>
         </RightSideContent>
       </Container>
       {<Plans setModalOpen={setModalOpen} isModalOpen={isModalOpen} />}

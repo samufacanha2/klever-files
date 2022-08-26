@@ -73,12 +73,16 @@ export const InputDiv = styled.div`
   justify-content: center;
   gap: 2.5rem;
 `;
+export const ButtonsDiv = styled(InputDiv)`
+  gap: 1rem;
+`;
 
 export const ForgotPassword = styled.button`
   width: 100%;
   font-weight: 600;
   padding: 0;
   margin-top: 8px;
+  margin-bottom: 1.5rem;
   border: none;
   background: none;
   font-size: 0.8rem;
