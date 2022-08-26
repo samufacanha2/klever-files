@@ -83,7 +83,7 @@ export const InputFile = styled.label<{ isDragging: boolean }>`
 `;
 
 export const ListContainer = styled.table`
-  min-height: 30vh;
+  min-height: 15vh;
   background-color: ${props => props.theme.card.background};
 
   padding: 1rem;
@@ -219,4 +219,23 @@ export const ItemContent = styled.button`
   border: none;
   background: none;
   color: ${props => props.theme.card.text};
+`;
+
+export const EmptyList = styled.div`
+  width: 100%;
+`;
+
+export const EmptyRow = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 100%;
+  color: ${props => props.theme.card.text};
+  font-size: 1.3rem;
+
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;

@@ -9,6 +9,7 @@ import {
   ActionsButton,
   Container,
   CurrentPlan,
+  EmptyRow,
   HashItem,
   HashLink,
   InputFile,
@@ -236,33 +237,37 @@ const Files: React.FC = () => {
               </ListHeaders>
             )}
             <ListBody>
-              {files.map(file => (
-                <ListRow key={file.hash}>
-                  <ListItem>
-                    <NameContent>
-                      <ActionsButton>
-                        <MdOutlineFileDownload size={24} />
-                      </ActionsButton>
-                      {file.name}
-                    </NameContent>
-                  </ListItem>
-                  <ListItem>
-                    <HashItem>
-                      <HashLink
-                        href={`https://ipfs.io/ipfs/${file.hash}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {isMobile ? stringEllipsis(file.hash, 18) : file.hash}
-                      </HashLink>
-                      <Copy data={file.hash} />
-                    </HashItem>
-                  </ListItem>
-                  <ListItem>
-                    <ItemContent>{formatSize(file.size)}</ItemContent>
-                  </ListItem>
-                </ListRow>
-              ))}
+              {files.length > 0 ? (
+                files.map(file => (
+                  <ListRow key={file.hash}>
+                    <ListItem>
+                      <NameContent>
+                        <ActionsButton>
+                          <MdOutlineFileDownload size={24} />
+                        </ActionsButton>
+                        {file.name}
+                      </NameContent>
+                    </ListItem>
+                    <ListItem>
+                      <HashItem>
+                        <HashLink
+                          href={`https://ipfs.io/ipfs/${file.hash}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {isMobile ? stringEllipsis(file.hash, 18) : file.hash}
+                        </HashLink>
+                        <Copy data={file.hash} />
+                      </HashItem>
+                    </ListItem>
+                    <ListItem>
+                      <ItemContent>{formatSize(file.size)}</ItemContent>
+                    </ListItem>
+                  </ListRow>
+                ))
+              ) : (
+                <EmptyRow htmlFor="input">Add an item to get started!</EmptyRow>
+              )}
             </ListBody>
           </ListContainer>
           <UploadLoaderContainer>
