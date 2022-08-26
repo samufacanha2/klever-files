@@ -96,6 +96,21 @@ export const RegisterContent = styled.div`
   color: ${({ theme }) => theme.input.border.dark};
 `;
 
+export const PlansButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.input.border.dark};
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export const RegisterButton = styled.button`
   font-weight: bold;
   padding: 0;
