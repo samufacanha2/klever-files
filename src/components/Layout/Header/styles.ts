@@ -324,6 +324,7 @@ export const StyledLink = styled(Link)`
   color: ${props => props.theme.navbar.text};
   text-decoration: none;
   font-weight: 600;
+  font-size: 1.2rem;
   transition: 0.2s ease;
   &:hover {
     text-decoration: underline;
