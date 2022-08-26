@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ isModalOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -9,15 +9,28 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 2rem 3rem;
   gap: 2rem;
   backdrop-filter: brightness(0.4);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+
+  ${props =>
+    props.isModalOpen &&
+    css`
+      opacity: 1;
+      visibility: visible;
+    `}
 `;
 
 export const PlansContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  width: 100%;
 `;
 
 export const PlansBody = styled.div`

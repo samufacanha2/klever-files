@@ -1,3 +1,4 @@
+import Button from 'components/Button';
 import PlanItem from 'components/Layout/PlanItem';
 import plans from 'mocks/plans';
 import { PlansButton } from 'pages/Login/styles';
@@ -6,11 +7,12 @@ import { Container, PlansBody, PlansContainer } from './styles';
 
 interface IPlansProps {
   setModalOpen: (value: boolean) => void;
+  isModalOpen: boolean;
 }
 
-const Plans: React.FC<IPlansProps> = ({ setModalOpen }) => {
+const Plans: React.FC<IPlansProps> = ({ setModalOpen, isModalOpen }) => {
   return (
-    <Container>
+    <Container isModalOpen={isModalOpen}>
       <PlansContainer>
         <PlansBody>
           {plans.map((plan, _) => (
@@ -18,7 +20,11 @@ const Plans: React.FC<IPlansProps> = ({ setModalOpen }) => {
           ))}
         </PlansBody>
       </PlansContainer>
-      <PlansButton onClick={() => setModalOpen(false)}>Close</PlansButton>
+      <PlansButton>
+        <Button styleType="secondary" onClick={() => setModalOpen(false)}>
+          Close
+        </Button>
+      </PlansButton>
     </Container>
   );
 };

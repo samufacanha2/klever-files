@@ -83,12 +83,15 @@ const Login: React.FC = () => {
             <p>Do not have an account?</p>
             <RegisterButton>Register</RegisterButton>
           </RegisterContent>
-          <PlansButton onClick={() => setModalOpen(true)}>
-            See Plans
+
+          <PlansButton>
+            <Button styleType="outlined" onClick={() => setModalOpen(true)}>
+              Plans
+            </Button>
           </PlansButton>
         </RightSideContent>
       </Container>
-      {isModalOpen && <Plans setModalOpen={setModalOpen} />}
+      {<Plans setModalOpen={setModalOpen} isModalOpen={isModalOpen} />}
     </>
   );
 };

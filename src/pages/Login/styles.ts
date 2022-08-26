@@ -97,13 +97,10 @@ export const RegisterContent = styled.div`
 `;
 
 export const PlansButton = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-  align-items: center;
-  justify-content: center;
-  color: ${({ theme }) => theme.input.border.dark};
+  width: 40%;
+
   font-size: 1.5rem;
+
   cursor: pointer;
   user-select: none;
   &:hover {
