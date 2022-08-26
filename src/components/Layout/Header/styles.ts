@@ -47,11 +47,18 @@ export const Content = styled.div`
 
 export const Logo = styled.div`
   height: 100%;
+  min-width: 12rem;
+  min-height: 3rem;
 
   display: grid;
   place-items: center;
 
   cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const Item = styled.div<{ selected: boolean }>`
@@ -317,6 +324,7 @@ export const StyledLink = styled(Link)`
   color: ${props => props.theme.navbar.text};
   text-decoration: none;
   font-weight: 600;
+  font-size: 1.2rem;
   transition: 0.2s ease;
   &:hover {
     text-decoration: underline;

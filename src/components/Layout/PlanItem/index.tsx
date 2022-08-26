@@ -59,28 +59,33 @@ const PlanItem: React.FC<IPlanItem> = ({
       kda: 'TUSD-13T0',
     };
 
-    const unsignedTx = await core.buildTransaction([
-      {
-        payload,
-        type: TransactionType.Transfer,
-      },
-    ]);
+    try {
+      const unsignedTx = await core.buildTransaction([
+        {
+          payload,
+          type: TransactionType.Transfer,
+        },
+      ]);
 
-    const signedTx = await core.signTransaction(unsignedTx);
+      const signedTx = await core.signTransaction(unsignedTx);
 
-    const response = await core.broadcastTransactions([signedTx]);
-    toast.success('Transaction broadcasted');
+      const response = await core.broadcastTransactions([signedTx]);
+      toast.success('Transaction broadcasted');
 
-    asyncDoIf(
-      () => setSucessful(true),
-      () => {
-        setLoading(false);
+      asyncDoIf(
+        () => setSucessful(true),
+        () => {
+          setLoading(false);
 
-        toast.error('Transaction failed');
-      },
-      () => checkTxStatus(response),
-      20,
-    );
+          toast.error('Transaction failed');
+        },
+        () => checkTxStatus(response),
+        20,
+      );
+    } catch (e: any) {
+      setLoading(false);
+      toast.error(e.message ? e.message : e);
+    }
   };
 
   useDidUpdateEffect(() => {

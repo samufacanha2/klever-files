@@ -53,8 +53,8 @@ export const LogoContainer = styled.div`
     display: unset !important;
     min-width: unset !important;
     max-width: unset !important;
-    height: 48px !important;
-    width: 135px !important;
+    height: 64px !important;
+    width: 205px !important;
   }
 `;
 
