@@ -1,7 +1,7 @@
 import Copy from 'components/Copy';
 import Loader from 'components/Loader';
 import { fileHeaders } from 'configs/file/headers';
-import files from 'mocks/files';
+import defaultFiles from 'mocks/files';
 import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { IFile } from 'types';
@@ -32,8 +32,8 @@ import {
 import { useWidth } from 'contexts/width';
 import plans from 'mocks/plans';
 import { MdOutlineFileDownload } from 'react-icons/md';
-import api, { Service } from 'services/api';
 // import Axios from 'axios';
+import axios from 'axios';
 import { formatSize, stringEllipsis } from 'utils';
 
 const Files: React.FC = () => {
@@ -43,6 +43,8 @@ const Files: React.FC = () => {
   const [isUploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const [files, setFiles] = useState<IFile[]>(defaultFiles);
+
   const { isMobile } = useWidth();
 
   const planName = sessionStorage.getItem('plan') || 'free';
@@ -50,6 +52,11 @@ const Files: React.FC = () => {
 
   const FetchFiles = useCallback(async () => {
     setLoading(true);
+    setFiles(
+      localStorage.getItem('files')
+        ? JSON.parse(localStorage.getItem('files') || '[]')
+        : [],
+    );
     await new Promise<void>(resolve =>
       setTimeout(() => {
         resolve(setLoading(false));
@@ -67,9 +74,8 @@ const Files: React.FC = () => {
 
   const processFile = async (event: any, isDrop: boolean) => {
     preventEvent(event);
-    console.log('---------ENTROU processFile ------------');
-    const file = isDrop ? event.dataTransfer.files : event.target.files;
-    await uploadFile(file);
+    const files = isDrop ? event.dataTransfer.files : event.target.files;
+    await uploadFile(files);
   };
 
   // const downloadFile = async (hash: string) => {
@@ -106,7 +112,7 @@ const Files: React.FC = () => {
   //   }
   // };
 
-  const uploadFile = async (file: any) => {
+  const uploadFile = async (fileArray: any) => {
     setUploading(true);
     try {
       await new Promise<void>(resolve =>
@@ -115,28 +121,20 @@ const Files: React.FC = () => {
         }, 2000),
       );
 
-      console.log(file);
       const formData = new FormData();
-      formData.append('file', file[0]);
-      console.log(formData);
+      formData.set('file', fileArray[0]);
 
-      const newFileResponse = await api.post({
-        route: 'v1',
-        service: Service.IPFS,
-        body: formData,
-      });
-
-      if (newFileResponse.error !== '') {
-        console.error(newFileResponse.error);
-        return;
-      }
-
-      const newFile: IFile = {
-        name: file[0].name,
-        hash: newFileResponse.data.hash,
-        size: file[0].size,
-      };
-      files.push(newFile);
+      const newFileResponse = await axios
+        .post('http://localhost:8081/v1/', formData)
+        .then(res => {
+          const newFile: IFile = {
+            name: fileArray[0].name,
+            hash: res.data.data.hash,
+            size: fileArray[0].size,
+          };
+          localStorage.setItem('files', JSON.stringify([...files, newFile]));
+          setFiles([...files, newFile]);
+        });
 
       // const newFileResponse = await Axios.post(
       //   'https://1276-45-174-189-188.sa.ngrok.io/v1',
