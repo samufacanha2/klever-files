@@ -80,39 +80,22 @@ const Files: React.FC = () => {
     await uploadFile(files);
   };
 
-  // const downloadFile = async (hash: string) => {
-  //   try {
-  //     await new Promise<void>(resolve =>
-  //       setTimeout(() => {
-  //         resolve();
-  //       }, 2000),
-  //     );
-
-  // interface IQuery {
-  //   [key: string]: any;
-  // }
-
-  //     const fileResponse = await api.get({
-  //       route: 'v1',
-  //       service: Service.IPFS,
-  //       query: { hash: `${hash}` },
-  //     });
-
-  //     console.log(fileResponse);
-
-  //     setLoading(true);
-  //     await new Promise<void>(resolve =>
-  //       setTimeout(() => {
-  //         resolve(setLoading(false));
-  //       }, 500),z
-  //     );
-
-  //     toast.success('Download Successfully');
-  //   } catch (error: any) {
-  //     setUploading(false);
-  //     toast.error(error.message);
-  //   }
-  // };
+  const downloadFile = async (hash: string, name: string) => {
+    fetch(`https://ipfs.io/ipfs/${hash}`)
+      .then(resp => resp.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        // the filename you want
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      })
+      .catch(() => alert('oh no!'));
+  };
 
   const uploadFile = async (fileArray: any) => {
     setUploading(true);
@@ -137,23 +120,6 @@ const Files: React.FC = () => {
           localStorage.setItem('files', JSON.stringify([...files, newFile]));
           setFiles([...files, newFile]);
         });
-
-      // const newFileResponse = await Axios.post(
-      //   'https://1276-45-174-189-188.sa.ngrok.io/v1',
-      //   formData,
-      //   {
-      //     headers: {
-      //       'Content-Type': 'multipart/form-data',
-      //       'Access-Control-Allow-Origin': '*',
-      //       'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
-      //     },
-      //   },
-      // );
-      // .then(resp => {
-      //   if (resp.status === 200) {
-      //     console.log('File uploaded');
-      //   }
-      // });
 
       console.log(newFileResponse);
 
@@ -242,7 +208,9 @@ const Files: React.FC = () => {
                   <ListRow key={file.hash}>
                     <ListItem>
                       <NameContent>
-                        <ActionsButton>
+                        <ActionsButton
+                          onClick={() => downloadFile(file.hash, file.name)}
+                        >
                           <MdOutlineFileDownload size={24} />
                         </ActionsButton>
                         {file.name}
