@@ -54,9 +54,7 @@ export const getHost = (
     [Service.GECKO]: 'https://api.coingecko.com/api/v3',
     [Service.EXPLORER]:
       process.env.REACT_APP_EXPLORER_HOST || 'https://testnet.kleverscan.org',
-    [Service.IPFS]:
-      process.env.REACT_APP_IPFS_API ||
-      'https://059d-45-174-189-188.sa.ngrok.io',
+    [Service.IPFS]: 'http://5.161.136.63:8081',
   };
 
   let host = hostService[service || 0];

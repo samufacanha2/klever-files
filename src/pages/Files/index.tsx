@@ -110,7 +110,7 @@ const Files: React.FC = () => {
       formData.set('file', fileArray[0]);
 
       const newFileResponse = await axios
-        .post('http://localhost:8081/v1/', formData)
+        .post('http://5.161.136.63:8081/v1/', formData)
         .then(res => {
           const newFile: IFile = {
             name: fileArray[0].name,
