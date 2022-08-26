@@ -32,6 +32,8 @@ import {
 import { useWidth } from 'contexts/width';
 import plans from 'mocks/plans';
 import { MdOutlineFileDownload } from 'react-icons/md';
+import api, { Service } from 'services/api';
+// import Axios from 'axios';
 import { formatSize, stringEllipsis } from 'utils';
 
 const Files: React.FC = () => {
@@ -65,9 +67,44 @@ const Files: React.FC = () => {
 
   const processFile = async (event: any, isDrop: boolean) => {
     preventEvent(event);
+    console.log('---------ENTROU processFile ------------');
     const file = isDrop ? event.dataTransfer.files : event.target.files;
     await uploadFile(file);
   };
+
+  // const downloadFile = async (hash: string) => {
+  //   try {
+  //     await new Promise<void>(resolve =>
+  //       setTimeout(() => {
+  //         resolve();
+  //       }, 2000),
+  //     );
+
+  //     // interface IQuery {
+  //     //   [key: string]: any;
+  //     // }
+
+  //     const fileResponse = await api.get({
+  //       route: 'v1',
+  //       service: Service.IPFS,
+  //       query: { hash: `${hash}` },
+  //     });
+
+  //     console.log(fileResponse);
+
+  //     setLoading(true);
+  //     await new Promise<void>(resolve =>
+  //       setTimeout(() => {
+  //         resolve(setLoading(false));
+  //       }, 500),z
+  //     );
+
+  //     toast.success('Download Successfully');
+  //   } catch (error: any) {
+  //     setUploading(false);
+  //     toast.error(error.message);
+  //   }
+  // };
 
   const uploadFile = async (file: any) => {
     setUploading(true);
@@ -78,24 +115,47 @@ const Files: React.FC = () => {
         }, 2000),
       );
 
-      // const newFileResponse = api.post({
-      //   route: '',
-      //   service: Service.IPFS,
-      //   body: {
-      //     path: `hackathon/${file[0].name}`,
-      //   },
-      // });
-
       const formData = new FormData();
       await formData.append('file', file[0]);
       console.log(formData);
 
+      const newFileResponse = await api.post({
+        route: 'v1',
+        service: Service.IPFS,
+        body: formData,
+      });
+
+      if (newFileResponse.error !== '') {
+        console.error(newFileResponse.error);
+        return;
+      }
+
       const newFile: IFile = {
         name: file[0].name,
-        hash: `${files[0].hash.split('-')[0]}-${files.length}`,
+        hash: newFileResponse.data.hash,
         size: file[0].size,
       };
       files.push(newFile);
+
+      // const newFileResponse = await Axios.post(
+      //   'https://1276-45-174-189-188.sa.ngrok.io/v1',
+      //   formData,
+      //   {
+      //     headers: {
+      //       'Content-Type': 'multipart/form-data',
+      //       'Access-Control-Allow-Origin': '*',
+      //       'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+      //     },
+      //   },
+      // );
+      // .then(resp => {
+      //   if (resp.status === 200) {
+      //     console.log('File uploaded');
+      //   }
+      // });
+
+      console.log(newFileResponse);
+
       setUploading(false);
       setLoading(true);
       await new Promise<void>(resolve =>

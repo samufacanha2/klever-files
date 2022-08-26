@@ -54,7 +54,9 @@ export const getHost = (
     [Service.GECKO]: 'https://api.coingecko.com/api/v3',
     [Service.EXPLORER]:
       process.env.REACT_APP_EXPLORER_HOST || 'https://testnet.kleverscan.org',
-    [Service.IPFS]: process.env.REACT_APP_IPFS_API || 'https://ipfs.io/ipfs',
+    [Service.IPFS]:
+      process.env.REACT_APP_IPFS_API ||
+      'https://059d-45-174-189-188.sa.ngrok.io',
   };
 
   let host = hostService[service || 0];
@@ -115,7 +117,7 @@ export const withoutBody = async (
     const response = await fetch(getHost(route, query, service, apiVersion), {
       method: method.toString(),
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
     });
 
