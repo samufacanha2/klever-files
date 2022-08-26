@@ -94,7 +94,7 @@ const Files: React.FC = () => {
         a.click();
         window.URL.revokeObjectURL(url);
       })
-      .catch(() => alert('oh no!'));
+      .catch(() => toast.error('Error downloading file'));
   };
 
   const uploadFile = async (fileArray: any) => {
