@@ -80,9 +80,9 @@ const Files: React.FC = () => {
   //       }, 2000),
   //     );
 
-  //     // interface IQuery {
-  //     //   [key: string]: any;
-  //     // }
+  // interface IQuery {
+  //   [key: string]: any;
+  // }
 
   //     const fileResponse = await api.get({
   //       route: 'v1',
@@ -115,8 +115,9 @@ const Files: React.FC = () => {
         }, 2000),
       );
 
+      console.log(file);
       const formData = new FormData();
-      await formData.append('file', file[0]);
+      formData.append('file', file[0]);
       console.log(formData);
 
       const newFileResponse = await api.post({

@@ -117,7 +117,7 @@ export const withoutBody = async (
     const response = await fetch(getHost(route, query, service, apiVersion), {
       method: method.toString(),
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
     });
 
@@ -141,7 +141,7 @@ export const withBody = async (props: IProps, method: Method): Promise<any> => {
     const response = await fetch(getHost(route, query, service, apiVersion), {
       method: method.toString(),
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
       body: JSON.stringify(body),
     });
